@@ -1,0 +1,58 @@
+.page-titlee{
+    display: flex;
+    font-size: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top :50px;
+}
+.name-email{
+    display: flex;
+    gap: 10px;
+
+
+
+}
+.name-messageEmail{
+    display: flex;
+    gap: 10px;
+}
+.error-message{
+    color: red;
+}
+.form-group .required::after {
+    content: " *";
+    color: red;
+}
+
+.form-controll{
+    width: 270px;
+    border: 1px solid #b6a3a3;
+}
+.form-control-num{
+    width: 550px;border: 1px solid #b6a3a3;
+}
+
+.container{
+  margin-top: 70px;
+
+}
+.standard-formm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form-groupp{
+    display: flex;
+    gap:10px;
+    flex-direction: column;
+}
+.button-submitt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.btn{
+    background-color: darkblue;
+    color: white;
+}

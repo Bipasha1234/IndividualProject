@@ -1,0 +1,83 @@
+.gallery-admin{
+    margin-left: 600px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.gallery-label{
+   font-weight: bold;
+    display: flex;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.file{
+    font-size: 20px;
+    width: 40%;
+height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-gallery-admin{
+    display: flex;
+    margin-left: 100px;
+}
+
+
+
+
+
+
+/*.container-gallery {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    flex-direction: column;*/
+
+/*    margin-top: 30%; !* Use a percentage for responsiveness *!*/
+/*    margin-left: 35%; !* Use a percentage for responsiveness *!*/
+/*    width: 90%; !* Use a percentage for responsiveness *!*/
+/*    max-width: 600px; !* Set a maximum width to prevent it from becoming too wide on larger screens *!*/
+/*    padding: 10px;*/
+/*    box-shadow: 0 2px 4px rgba(44, 43, 43, 0.4);*/
+/*}*/
+
+/*.choose-file {*/
+/*    display: flex;*/
+/*}*/
+
+/*.upload-gallery {*/
+/*    background-color: #3540bb;*/
+/*    color: white;*/
+/*    width: 77px;*/
+/*    height: 40px;*/
+/*    font-family: Arial, Helvetica, sans-serif;*/
+/*    font-weight: 700;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    font-size: 17px;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.gallery-submit {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin-top: 15px;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*!* Media query for smaller screens *!*/
+/*@media (max-width: 768px) {*/
+/*    .container-gallery {*/
+/*        width: 80%; !* Adjust width for smaller screens *!*/
+/*        margin-left: auto;*/
+/*        margin-right: auto;*/
+/*    }*/
+/*}*/

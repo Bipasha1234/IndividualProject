@@ -1,0 +1,79 @@
+.col-lg{
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 70px;
+    margin-top: 100px;
+    width: 70%;
+
+}.n-p p:nth-child(4)::before {
+     content: '';
+     display: block;
+     border-top: 1px solid #c7b9b9; /* You can change the color */
+     margin-bottom: 10px;
+     margin-top: 5px;
+ }
+ .bochure{
+     display: flex;
+     flex-direction: column;
+
+ }
+
+.side{
+
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-left: 100px;
+    color: black;
+    margin-top: 100px;
+    display: flex;
+    /*width: 31%;*/
+    height: 700px;
+    padding: 16px;
+    line-height: 38px;
+
+    justify-content: center;
+    align-items: start;
+}
+.cost{
+    display: flex;
+    justify-content: end;
+}
+.price-row{
+    display: flex;
+    /*justify-content: end;*/
+    gap: 110px;
+}
+.n-p{
+    padding: 20px;
+    font-family: Dubai;
+}
+
+
+
+    /* Navbar styles */
+.Navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the Navbar is above other elements */
+    /* Add other Navbar styles as needed */
+}
+
+.Bname-container{
+    margin-top: 75px;
+    padding: 22px;
+    font-weight: 600;
+    background-color: #e1e9f6;
+    font-size: 16px;
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: start;
+
+}
+.container-booking{
+    display: flex;
+    /*flex-direction: column;*/
+  padding: 20px;
+
+
+}

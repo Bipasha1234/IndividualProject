@@ -1,0 +1,100 @@
+.packages{
+    /*width: 80%;*/
+    display: flex;
+    flex-direction: row;
+    margin-left: 280px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    justify-content: center;
+
+    border-radius: 10px;
+    /*margin-top: 30px;*/
+
+    align-items: center;
+
+
+}
+
+/*label{*/
+/*    width: 20%;*/
+/*}*/
+input{
+    border-radius: 6px;
+    border: 1px solid #4b4949;
+
+
+}
+/*textarea{*/
+/*    border-radius: 6px;*/
+/*    border: 1px solid #4b4949;*/
+/*    height: 360px;*/
+/*    width: 700px;*/
+
+/*}*/
+.text-area{
+        border-radius: 6px;
+        border: 1px solid #4b4949;
+        height: 360px;
+        width: 900px;
+
+
+}
+.small-fields{
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+}
+.submit-btn{
+    background-color: #3540bb;
+    /*background-color: #4caf50;*/
+    color: white;
+
+    width: 77px;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-dur{
+    display: flex;
+    gap: 15px;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+.name-diff{
+    display: flex;
+    gap: 15px;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+.price-alt{
+    display: flex;
+    gap: 15px;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+.package-fields{
+    display: flex;
+    flex-direction: column;
+gap:20px;
+    /*flex-wrap: wrap;*/
+    margin-top: 100px;
+}
