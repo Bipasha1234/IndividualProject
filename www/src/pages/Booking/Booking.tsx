@@ -364,9 +364,16 @@ function PlanTrip() {
                                     </div>
 
                                     <p style={{lineHeight:'2px',fontSize:'14px'}}>  ${data.packagePerPrice} * {bookingTravellers} person (s)</p>
+
+
+                                </div>
+                                <div className={'pay'}>
+                                    <strong >Pay upon arrival - Cash on visit</strong>
                                 </div>
 
+
                             </div>
+
 
 
                         </div>
