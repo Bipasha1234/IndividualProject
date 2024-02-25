@@ -10,14 +10,22 @@ function GalleryDelete() {
     const { data } = useQuery({
         queryKey: ["GET_GALLERY_ALL"],
         queryFn() {
-            return axios.get("http://localhost:8081/gallery/getAll");
+            return axios.get("http://localhost:8081/gallery/getAll", {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
         },
     });
 
     const deleteBlog = useMutation({
         mutationKey: ["DELETE_BLOG"],
         mutationFn: (blogId) => {
-            return axios.delete(`http://localhost:8081/gallery/deleteById/${blogId}`);
+            return axios.delete(`http://localhost:8081/gallery/deleteById/${blogId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
         },
         onSuccess: () => {
             // Invalidate and refetch data after successful deletion

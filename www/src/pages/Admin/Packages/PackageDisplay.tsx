@@ -8,16 +8,20 @@ import ReactQuill from "react-quill";
 function PackageDisplay() {
     const queryClient = useQueryClient();
     const [editingPackage, setEditingPackage] = useState(null);
-    const [imageFile, setImageFile] = useState(null); // Add this line to initialize the image file state
+    const [imageFile, setImageFile] = useState(null);
+
+    const token = localStorage.getItem('token');
 
     const { data } = useQuery({
         queryKey: ['GET_PACKAGE_ALL'],
         queryFn() {
-            return axios.get('http://localhost:8081/package/getAll');
+            return axios.get('http://localhost:8081/package/getAll', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
         },
     });
-
-    // ... (previous code)
 
     const updatePackage = useMutation({
         mutationKey: ['UPDATE_PACKAGE'],
@@ -33,7 +37,6 @@ function PackageDisplay() {
             formData.append('packageFaq', updatedPackage.packageFaq);
             formData.append('packageDuration', updatedPackage.packageDuration);
 
-            // Check if a new image is selected
             if (imageFile) {
                 formData.append('packageImage', imageFile);
             }
@@ -41,6 +44,7 @@ function PackageDisplay() {
             return axios.put(`http://localhost:8081/package/update/${updatedPackage.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
                 },
             });
         },
@@ -49,8 +53,6 @@ function PackageDisplay() {
             setEditingPackage(null);
         },
     });
-
-// ... (other code)
 
     const handleEdit = (pkg) => {
         setEditingPackage(pkg);

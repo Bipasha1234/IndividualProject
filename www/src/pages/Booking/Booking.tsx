@@ -18,7 +18,7 @@ interface TravelData {
 
 function PlanTrip() {
     const { id } = useParams();
-    const [packageDetails, setPackageDetails] = useState(null);
+    const [data, setData] = useState(null);
     const [bookingName, setBookingName] = useState("");
     const [bookingPhoneNumber, setBookingPhoneNumber] = useState("");
     const [bookingEmail, setBookingEmail] = useState("");
@@ -97,9 +97,14 @@ function PlanTrip() {
     useEffect(() => {
         const fetchPackageDetails = async () => {
             try {
-                const response = await Axios.get(`http://localhost:8081/package/getById/${id}`);
+                // const token = localStorage.getItem('token');
+                const response = await Axios.get(`http://localhost:8081/package/getById/${id}`, {
+                    // headers: {
+                    //     Authorization: `Bearer ${token}`
+                    // }
+                });
                 const packageData = response.data;
-                setPackageDetails(packageData);
+                setData(packageData);
                 setPackageId(packageData.id); // Set the packageId
             } catch (error) {
                 console.error('Error fetching package details:', error);
@@ -109,20 +114,26 @@ function PlanTrip() {
         fetchPackageDetails();
     }, [id]);
 
+
     const [totalCost, setTotalCost] = useState(0);
 
     useEffect(() => {
-        if (packageDetails && bookingTravellers.trim() !== "") {
-            const total = parseInt(bookingTravellers) * parseFloat(packageDetails.packagePerPrice);
+        if (data && bookingTravellers.trim() !== "") {
+            const total = parseInt(bookingTravellers) * parseFloat(data.packagePerPrice);
             setTotalCost(total);
         }
-    }, [packageDetails, bookingTravellers]);
+    }, [data, bookingTravellers]);
+
 
 
 
     const mutation = useMutation(
         (formData: TravelData) =>
-            Axios.post("http://localhost:8081/booking/save", formData),
+            Axios.post("http://localhost:8081/booking/save", formData, {
+                // headers: {
+                //     Authorization: `Bearer ${localStorage.getItem('token')}` // Include token in the request headers
+                // }
+            }),
         {
             onSuccess: (data) => {
                 console.log("Trip saved successfully:", data);
@@ -132,7 +143,6 @@ function PlanTrip() {
             },
         }
     );
-
     const submit = () => {
         if (validateForm()) {
             mutation.mutate({
@@ -330,19 +340,19 @@ function PlanTrip() {
                     </div>
                 </div>
                 <div className={'side'}>
-                    {packageDetails && (
+                    {data && (
                         <div>
-                            {packageDetails.packageImage && (
+                            {data.packageImage && (
                                 <img
-                                    src={`data:image/png;base64,${packageDetails.packageImage}`} // Use the correct content type
+                                    src={`data:image/png;base64,${data.packageImage}`} // Use the correct content type
                                     alt="Package Image"
                                     style={{ height:'250px',borderRadius:'5px' }}
                                 />
                             )}
                             <div className={'n-p'}>
-                                <h1 style={{fontSize:'26px'}}>{packageDetails.packageName}</h1>
-                                <p style={{fontSize:'18px',fontWeight:'bold'}}>Trip Duration: {packageDetails.packageDuration}</p>
-                                <p style={{fontSize:'18px',fontWeight:'bold'}}>Per Person: ${packageDetails.packagePerPrice}</p>
+                                <h1 style={{fontSize:'26px'}}>{data.packageName}</h1>
+                                <p style={{fontSize:'18px',fontWeight:'bold'}}>Trip Duration: {data.packageDuration}</p>
+                                <p style={{fontSize:'18px',fontWeight:'bold'}}>Per Person: ${data.packagePerPrice}</p>
                                 <p style={{fontSize:'18px',fontWeight:'bold'}}>Total Person: {bookingTravellers} person(s)</p>
                                 <div className={'bochure'}>
                                     <div className={'price-row'}>
@@ -353,7 +363,7 @@ function PlanTrip() {
 
                                     </div>
 
-                                    <p style={{lineHeight:'2px',fontSize:'14px'}}>  ${packageDetails.packagePerPrice} * {bookingTravellers} person (s)</p>
+                                    <p style={{lineHeight:'2px',fontSize:'14px'}}>  ${data.packagePerPrice} * {bookingTravellers} person (s)</p>
                                 </div>
 
                             </div>

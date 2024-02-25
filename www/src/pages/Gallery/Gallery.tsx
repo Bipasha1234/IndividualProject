@@ -19,14 +19,24 @@ const Photo: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/gallery/getAll')
+        // Assuming you have a token stored in localStorage
+        // const token = localStorage.getItem('token');
+
+        // Check if token exists
+
+        axios.get('http://localhost:8081/gallery/getAll', {
+            // headers: {
+            //     Authorization: `Bearer ${token}` // Assuming it's a bearer token
+            // }
+        })
             .then((response) => {
                 setPhotos(response.data);
             })
             .catch((error) => {
                 console.error('Error fetching photos:', error);
             });
-    }, []);
+    });
+
 
     const handleIncrement = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);

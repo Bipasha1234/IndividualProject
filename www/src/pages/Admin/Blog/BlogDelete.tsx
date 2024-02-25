@@ -11,14 +11,22 @@ function BlogDelete() {
     const { data } = useQuery({
         queryKey: ["GET_BLOG_ALL"],
         queryFn() {
-            return axios.get("http://localhost:8081/blog/getAll");
+            return axios.get("http://localhost:8081/blog/getAll", {
+                headers: {
+                  authorization: "Bearer " + localStorage.getItem("token")  // Include the token
+                }
+            });
         },
     });
 
     const deleteBlog = useMutation({
         mutationKey: ["DELETE_BLOG"],
         mutationFn: (blogId) => {
-            return axios.delete(`http://localhost:8081/blog/deleteById/${blogId}`);
+            return axios.delete(`http://localhost:8081/blog/deleteById/${blogId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}` // Include the token
+                }
+            });
         },
         onSuccess: () => {
             // Invalidate and refetch data after successful deletion

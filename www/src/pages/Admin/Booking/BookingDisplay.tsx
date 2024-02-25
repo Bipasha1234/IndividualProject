@@ -11,7 +11,9 @@ const BookingList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8081/booking/getAll');
+                const response = await axios.get('http://localhost:8081/booking/getAll', {
+                    headers: { authorization: "Bearer " + localStorage.getItem("token") }
+                });
                 setBookings(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -26,7 +28,9 @@ const BookingList = () => {
 
         if (confirmed) {
             try {
-                await axios.delete(`http://localhost:8081/booking/deleteById/${id}`);
+                await axios.delete(`http://localhost:8081/booking/deleteById/${id}`, {
+                    headers: { authorization: "Bearer " + localStorage.getItem("token") }
+                });
                 setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== id));
             } catch (error) {
                 console.error('Error deleting booking:', error);
@@ -80,9 +84,9 @@ const BookingList = () => {
                             <td>{booking.pkg.packagePerPrice}</td>
                             <td>{parseFloat(booking.bookingTravellers) * parseFloat(booking.pkg.packagePerPrice)}</td>
                             <td>
-                                <div className={'delete-button'}>
-                                    <button className="del" onClick={() => handleDelete(booking.id)}>Delete</button>
-                                </div>
+                                <button className={'delete-button'}
+                                   onClick={() => handleDelete(booking.id)}>Delete</button>
+
 
                             </td>
                         </tr>

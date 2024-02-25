@@ -173,6 +173,7 @@
     font-size: 40px;
     cursor: pointer;
     margin-bottom: 30px;
+    color: #061a5d;
 }
 @media screen and (max-width: 768px) {
     .components {

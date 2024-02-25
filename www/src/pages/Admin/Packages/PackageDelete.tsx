@@ -12,21 +12,28 @@ function ItemDisplay() {
     const { data } = useQuery({
         queryKey: ["GET_PACKAGE_ALL"],
         queryFn() {
-            return axios.get("http://localhost:8081/package/getAll");
+            return axios.get("http://localhost:8081/package/getAll", {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            });
         },
     });
 
     const deletePackage = useMutation({
         mutationKey: ["DELETE_PACKAGE"],
         mutationFn: (packageId) => {
-            return axios.delete(`http://localhost:8081/package/deleteById/${packageId}`);
+            return axios.delete(`http://localhost:8081/package/deleteById/${packageId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            });
         },
         onSuccess: () => {
             // Invalidate and refetch data after successful deletion
             queryClient.invalidateQueries("GET_PACKAGE_ALL");
         },
     });
-
     const handleDelete = (packageId, packageName) => {
         const confirmDelete = window.confirm(`Are you sure you want to delete ${packageName}?`);
 

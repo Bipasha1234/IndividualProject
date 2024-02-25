@@ -8,8 +8,14 @@ import './Blog.css';
 import Footer from "../Footer/Footer.tsx";
 
 function BlogList() {
+    // const token = localStorage.getItem('token'); // Get the JWT token from localStorage
+
     const { data, isLoading, isError } = useQuery('GET_BLOG_ALL', async () => {
-        const response = await axios.get('http://localhost:8081/blog/getAll');
+        const response = await axios.get('http://localhost:8081/blog/getAll', {
+            // headers: {
+            //     Authorization: `Bearer ${token}` // Include the JWT token in the Authorization header
+            // }
+        });
         return response.data;
     });
 

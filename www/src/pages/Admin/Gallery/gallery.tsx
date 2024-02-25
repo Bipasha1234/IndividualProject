@@ -15,12 +15,19 @@ function AdminGallery() {
     const [imageFile, setImageFile] = useState(null); //
 
 
+    const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+
     const { data } = useQuery({
         queryKey: ['GET_GALLERY_ALL'],
         queryFn() {
-            return axios.get('http://localhost:8081/gallery/getAll');
+            return axios.get('http://localhost:8081/gallery/getAll', {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include the token in the headers
+                },
+            });
         },
     });
+
     const apiCall = useMutation({
         mutationKey: ['POST_ITEM'],
         mutationFn: async (formData) => {
@@ -31,6 +38,7 @@ function AdminGallery() {
                 const response = await axios.post('http://localhost:8081/gallery/save', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${token}`,
                     },
                 });
 
@@ -68,6 +76,7 @@ function AdminGallery() {
             return axios.put(`http://localhost:8081/gallery/update/${updatedBlog.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`,
                 },
             });
         },
@@ -186,14 +195,6 @@ function AdminGallery() {
                     <Admin />
                 </div>
             </div>
-
-
-
-            <div>
-                <Admin />
-            </div>
-
-
 
         </>
     );

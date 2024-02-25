@@ -19,6 +19,13 @@ import CustomizeTrip from './pages/CustomizeTrip/customizeTrip';
 import Booking from './pages/Booking/Booking';
 import BookingList from './pages/Admin/Booking/BookingDisplay';
 import Footer from './pages/Footer/Footer';
+import AdminCustomizeTrip from "./pages/Admin/customizeTrip/customizeTrip.tsx";
+import AdminMessage from "./pages/Admin/Message/message.tsx";
+import React from "react";
+import LoginForm from "./pages/Admin/Login/Register.tsx";
+import RegisterForm from "./pages/Admin/Login/Login.tsx";
+
+
 
 
 const queryClient = new QueryClient();
@@ -34,7 +41,7 @@ function App() {
                     <Route path="/admin/packageDelete" element={<PackageDelete />} />
                     <Route path="/trekkingTour/:id" element={<TrekkingTour />} />
                     <Route path="/blogById/:id" element={<BlogById />} />
-                    <Route path="/admin" element={<Admin />} />
+                    {/*<Route path="/admin" element={<Admin />} />*/}
                     <Route path="/admin/uploadPackages" element={<PackageCreate />} />
                     <Route path="/admin/managePackages" element={<PackageDisplay />} />
                     <Route path="/admin/blogCreate" element={<BlogCreate />} />
@@ -48,8 +55,10 @@ function App() {
                     <Route path="/booking/:id" element={<Booking />} />
                     <Route path="/booking/admin" element={<BookingList />} />
                     <Route path="/footer" element={<Footer />} />
-                    {/*<Route path="/admin/register" element={<Register />} />*/}
-                    {/*<Route path="/admin/login" element={<Login />} />*/}
+                    <Route path="/admin/customizetrip" element={<AdminCustomizeTrip />} />
+                    <Route path="/admin/askquestion" element={<AdminMessage />} />
+                    <Route path="/login" element={<RegisterForm />} />
+                    <Route path="/admin/register" element={<LoginForm />} />
                 </Routes>
             </Router>
         </QueryClientProvider>

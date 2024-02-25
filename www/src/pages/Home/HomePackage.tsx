@@ -1,10 +1,15 @@
-// BlogList.jsx
 import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
 function BlogList({ searchCriteria }) {
     const { data, isLoading, isError } = useQuery('GET_PKG_ALL', async () => {
+        // const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+        // const config = {
+        //     headers: {
+        //         Authorization: `Bearer ${token}`
+        //     }
+        // };
         const response = await axios.get('http://localhost:8081/package/getAll');
         return response.data;
     });
@@ -20,6 +25,7 @@ function BlogList({ searchCriteria }) {
     const filteredPkgs = data.filter((pkg) => {
         return pkg.packageName.toLowerCase().includes(searchCriteria.packageName.toLowerCase());
     });
+
 
     return (
         <div className={'main-div-package'}>

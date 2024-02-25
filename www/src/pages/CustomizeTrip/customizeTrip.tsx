@@ -156,9 +156,12 @@ function PlanTrip() {
         setFormErrors(newErrors);
         return valid;
     };
+
     const mutation = useMutation(
         (formData: TravelData) =>
-            Axios.post("http://localhost:8081/customize/save", formData),
+            Axios.post("http://localhost:8081/customize/save", formData, {
+                // headers: { authorization: "Bearer " + localStorage.getItem("token") }
+            }),
         {
             onSuccess: (data) => {
                 console.log("Trip saved successfully:", data);
@@ -170,6 +173,7 @@ function PlanTrip() {
             },
         }
     );
+
 
 
     const submit = () => {

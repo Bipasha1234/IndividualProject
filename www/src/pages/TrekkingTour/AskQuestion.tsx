@@ -75,26 +75,21 @@ function PlanTrip() {
         return valid;
     };
     const mutation = useMutation(
-        (formData: ReviewData) => Axios.post('http://localhost:8081/message/save', formData),
+        (formData: ReviewData) => Axios.post('http://localhost:8081/message/save', formData, {
+            // headers: {
+            //     Authorization: `Bearer ${localStorage.getItem('token')}` // Include token in the request headers
+            // }
+        }),
         {
             onSuccess: (response) => {
                 console.log('Message saved successfully:', response.data);
-                setReviewList([
-                    ...reviewList,
-                    {
-                        messageName: messageName,
-                        messageEmail: messageEmail,
-                        messageNumber: messageNumber,
-                        messageMsg: messageMsg,
-                    },
-                ]);
+                // Add your logic after successful mutation if needed
             },
             onError: (error) => {
                 console.error('Error saving message:', error);
             },
         }
     );
-
 
 
 

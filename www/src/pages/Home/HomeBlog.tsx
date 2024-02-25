@@ -1,12 +1,17 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
-
+import { Link } from 'react-router-dom';
 
 function BlogHome() {
     const { data, isLoading, isError } = useQuery('GET_BLOG_ALL', async () => {
+        // const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+        // const config = {
+        //     // headers: {
+        //     //     Authorization: `Bearer ${token}`
+        //     // }
+        // };
         const response = await axios.get('http://localhost:8081/blog/getAll');
         return response.data;
     });
@@ -18,8 +23,6 @@ function BlogHome() {
     if (isError) {
         return <p>Error loading blogs</p>;
     }
-
-
 
     return (
         <>

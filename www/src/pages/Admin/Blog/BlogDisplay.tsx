@@ -14,7 +14,11 @@ function BlogDisplay() {
     const { data } = useQuery({
         queryKey: ['GET_BLOG_ALL'],
         queryFn() {
-            return axios.get('http://localhost:8081/blog/getAll');
+            return axios.get('http://localhost:8081/blog/getAll', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}` // Include the token
+                }
+            });
         },
     });
 
@@ -36,6 +40,7 @@ function BlogDisplay() {
             return axios.put(`http://localhost:8081/blog/update/${updatedBlog.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
                 },
             });
         },

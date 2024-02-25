@@ -1,0 +1,36 @@
+/* BookingList.css */
+
+.table-container-customizeTrip {
+    width: 100%;
+    overflow-x: auto;
+    margin-left:260px;
+    margin-top: 30px;
+}
+
+.customize-trip-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.customize-trip-table th, .customize-trip-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.customize-trip-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}

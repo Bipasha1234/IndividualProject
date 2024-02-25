@@ -18,6 +18,7 @@ function PackageCreate() {
                 const response = await axios.post('http://localhost:8081/package/save', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        authorization: "Bearer " + localStorage.getItem("token")
                     },
                 });
 
