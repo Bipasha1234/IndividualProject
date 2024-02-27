@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 import './login.css';
-import ChangePasswordForm from "./changePassword.tsx";
+
 import {Link} from "react-router-dom";
 
 const LoginForm = () => {

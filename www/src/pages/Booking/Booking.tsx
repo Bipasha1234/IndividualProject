@@ -357,12 +357,8 @@ function PlanTrip() {
                                 <div className={'bochure'}>
                                     <div className={'price-row'}>
                                         <p style={{fontSize:'18px',fontWeight:'bold'}}>Total Price:  </p>
-
-                                            <p style={{fontSize:'18px',fontWeight:'bold',color:'darkblue'}}>Rs. {totalCost}</p>
-
-
+                                        <p style={{fontSize:'18px',fontWeight:'bold',color:'darkblue'}}>Rs. {totalCost}</p>
                                     </div>
-
                                     <p style={{lineHeight:'2px',fontSize:'14px'}}>  Rs. {data.packagePerPrice} * {bookingTravellers} person (s)</p>
                                 </div>
 
@@ -370,7 +366,9 @@ function PlanTrip() {
                                     <strong >Pay upon arrival - Cash on visit</strong>
                                 </div>
 
+
                             </div>
+
 
 
                         </div>

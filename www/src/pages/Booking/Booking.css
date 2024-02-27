@@ -11,10 +11,21 @@
      margin-bottom: 10px;
      margin-top: 5px;
  }
+
  .bochure{
      display: flex;
      flex-direction: column;
 
+ }
+ .pay{
+     font-size: 18px;
+     font-weight: bold;
+     margin-top: 20px;
+     background-color: #a0a6af;
+     border-radius: 10px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
  }
 
 .pay{
@@ -36,7 +47,11 @@
     margin-top: 100px;
     display: flex;
     /*width: 31%;*/
+<<<<<<< HEAD
     height: 640px;
+=======
+    height: 650px;
+>>>>>>> 0e8c06917686239a85214260e69abffcff97c441
     padding: 16px;
     line-height: 38px;
 
