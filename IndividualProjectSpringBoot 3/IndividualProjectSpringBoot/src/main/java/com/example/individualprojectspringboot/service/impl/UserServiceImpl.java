@@ -1,6 +1,7 @@
 package com.example.individualprojectspringboot.service.impl;
 
 import com.example.individualprojectspringboot.config.PasswordEncoderUtil;
+
 import com.example.individualprojectspringboot.entity.User;
 import com.example.individualprojectspringboot.pojo.UserPojo;
 import com.example.individualprojectspringboot.repository.UserRepository;
@@ -8,6 +9,7 @@ import com.example.individualprojectspringboot.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -17,20 +19,23 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
     @Override
     public void saveUser(UserPojo userPojo) {
-
         User user = new User();
 
-        if(userPojo.getId()!=null){
-            user=userRepository.findById(userPojo.getId())
-                    .orElseThrow(()-> new NoSuchElementException("No data found"));
+        if (userPojo.getId() != null) {
+            user = userRepository.findById(userPojo.getId())
+                    .orElseThrow(() -> new NoSuchElementException("No data found"));
         }
 
-        user.setFullName(userPojo.getFullName());
+        user.setFirstName(userPojo.getFirstName());
+        user.setLastName(userPojo.getLastName());
         user.setUserName(userPojo.getUserName());
+        user.setEmail(userPojo.getEmail());
         user.setPassword(PasswordEncoderUtil.getInstance().encode(userPojo.getPassword()));
-        userRepository.save(user);
+
+
     }
 
     @Override
@@ -48,3 +53,4 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 }
+

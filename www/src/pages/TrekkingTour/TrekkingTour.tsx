@@ -110,10 +110,10 @@ const TrekkingTour = () => {
                     )}
 
                     <div className={`box-tt ${isBoxTTFixed ? 'box-tt-fixed' : ''}`}>
-                        <strong className={'perPrice'}> Price Per Person: ${data.packagePerPrice}</strong>
+                        <strong className={'perPrice'}> Price Per Person: Rs. {data.packagePerPrice}</strong>
 
                         <div className={'click'}>
-                            <strong className={'total'}>Total Amount: ${totalAmount}</strong>
+                            <strong className={'total'}>Total Amount: Rs. {totalAmount}</strong>
                             <div style={{display:'flex',gap:'10px'}}>
                                 <button onClick={handlePlusClick}>+ </button>
                                 <p style={{ fontWeight: 'bold', fontSize: '20px' ,padding:'10px',display:'flex',justifyContent:'center',alignItems:'center'}}>{clickCount}</p>

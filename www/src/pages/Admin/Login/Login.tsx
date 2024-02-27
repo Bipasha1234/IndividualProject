@@ -3,9 +3,12 @@ import axios from 'axios';
 
 
 import './login.css';
+import ChangePasswordForm from "./changePassword.tsx";
+import {Link} from "react-router-dom";
+
 const LoginForm = () => {
     const [credentials, setCredentials] = useState({
-        userName: '',
+        email: '',
         password: ''
     });
 
@@ -21,7 +24,7 @@ const LoginForm = () => {
             localStorage.setItem('token', token);
             alert('Login successful');
             // Redirect to user form or any other authenticated route
-            window.location.href = '/admin';
+            window.location.href = '/admin/uploadPackages';
         } catch (error) {
             console.error('Login failed:', error);
             alert('Login failed');
@@ -29,14 +32,15 @@ const LoginForm = () => {
     };
 
     return (
+        <>
         <div className="login-form-container">
             <h2 className={'login-account'}>Login to your account</h2>
             <form onSubmit={handleSubmit} className="login-form">
                 <input
                     type="text"
-                    name="userName"
-                    placeholder="Username"
-                    value={credentials.userName}
+                    name="email"
+                    placeholder="Email"
+                    value={credentials.email}
                     onChange={handleChange}
                     required
                 />
@@ -48,9 +52,17 @@ const LoginForm = () => {
                     onChange={handleChange}
                     required
                 />
+                <div className={'change-password'}>
+                    <Link style={{color:'black'}} to={'/changePassword'}>Change password</Link>
+                </div>
+
                 <button type="submit" className="login-button">Login</button>
+
+
             </form>
         </div>
+
+        </>
     );
 };
 

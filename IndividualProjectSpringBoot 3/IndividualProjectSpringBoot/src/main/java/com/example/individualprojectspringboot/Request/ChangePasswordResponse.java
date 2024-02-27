@@ -1,0 +1,10 @@
+package com.example.individualprojectspringboot.Request;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class ChangePasswordResponse {
+    private String message;
+}

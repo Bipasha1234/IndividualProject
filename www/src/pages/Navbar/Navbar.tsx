@@ -38,10 +38,13 @@ const Navbar = () => {
 
         <div className='navBar'>
 
-            <div className={'logoDiv'}>
-                <SiYourtraveldottv className={'main-icon'}/>
-                <span className={'Voyago'}>VOYAGO</span>
-            </div>
+            <a href="/" className="logoLink">
+                <div className="logoDiv">
+                    <SiYourtraveldottv className="main-icon" />
+                    <span className="Voyago">VOYAGO</span>
+                </div>
+            </a>
+
 
 
             <div className={'components'}>

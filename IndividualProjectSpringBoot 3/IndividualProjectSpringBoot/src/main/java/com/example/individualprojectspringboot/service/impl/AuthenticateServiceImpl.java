@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticateServiceImpl implements AuthenticateService {
 
+
     private final UserRepository userRepo;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
@@ -26,13 +27,14 @@ public class AuthenticateServiceImpl implements AuthenticateService {
     public AuthenticateResponse authenticate(AuthenticateRequest authenticateRequest) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        authenticateRequest.getUserName(), authenticateRequest.getPassword()
+                        authenticateRequest.getEmail(), authenticateRequest.getPassword()
                 )
         );
-        User user= userRepo.getUserByUserName(authenticateRequest.getUserName())
+
+        User user = userRepo.getUserByEmail(authenticateRequest.getEmail())
                 .orElseThrow(() -> new EntityNotFoundException("User not found."));
         UserDetails userDetails = (UserDetails) user;
         String jwtToken = jwtService.generateToken(userDetails);
-        return AuthenticateResponse.builder().token(jwtToken).isAdmin(user.getId()==3).build();
+        return AuthenticateResponse.builder().token(jwtToken).userId(user.getId()).isAdmin(user.getId() == 3).build();
     }
 }

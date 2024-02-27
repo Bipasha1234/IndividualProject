@@ -352,18 +352,22 @@ function PlanTrip() {
                             <div className={'n-p'}>
                                 <h1 style={{fontSize:'26px'}}>{data.packageName}</h1>
                                 <p style={{fontSize:'18px',fontWeight:'bold'}}>Trip Duration: {data.packageDuration}</p>
-                                <p style={{fontSize:'18px',fontWeight:'bold'}}>Per Person: ${data.packagePerPrice}</p>
+                                <p style={{fontSize:'18px',fontWeight:'bold'}}>Per Person: Rs. {data.packagePerPrice}</p>
                                 <p style={{fontSize:'18px',fontWeight:'bold'}}>Total Person: {bookingTravellers} person(s)</p>
                                 <div className={'bochure'}>
                                     <div className={'price-row'}>
                                         <p style={{fontSize:'18px',fontWeight:'bold'}}>Total Price:  </p>
 
-                                            <p style={{fontSize:'21px',fontWeight:'bold',color:'darkblue'}}>${totalCost}</p>
+                                            <p style={{fontSize:'18px',fontWeight:'bold',color:'darkblue'}}>Rs. {totalCost}</p>
 
 
                                     </div>
 
-                                    <p style={{lineHeight:'2px',fontSize:'14px'}}>  ${data.packagePerPrice} * {bookingTravellers} person (s)</p>
+                                    <p style={{lineHeight:'2px',fontSize:'14px'}}>  Rs. {data.packagePerPrice} * {bookingTravellers} person (s)</p>
+                                </div>
+
+                                <div className={'pay'}>
+                                    <strong >Pay upon arrival - Cash on visit</strong>
                                 </div>
 
                             </div>

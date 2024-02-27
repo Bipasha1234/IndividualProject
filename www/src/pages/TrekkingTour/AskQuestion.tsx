@@ -151,8 +151,8 @@ function PlanTrip() {
 
 
 
-                                    <div className="form-group">
-                                        <label> Phone Number</label>
+                                    <div className="form-groupp">
+                                        <label className={'phone'}> Phone Number</label>
                                         <input
                                             className={'form-control-num' }
                                             type="text"

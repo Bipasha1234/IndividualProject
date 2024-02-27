@@ -24,6 +24,7 @@ import AdminMessage from "./pages/Admin/Message/message.tsx";
 import React from "react";
 import LoginForm from "./pages/Admin/Login/Register.tsx";
 import RegisterForm from "./pages/Admin/Login/Login.tsx";
+import ChangePasswordForm from "./pages/Admin/Login/changePassword.tsx";
 
 
 
@@ -58,7 +59,9 @@ function App() {
                     <Route path="/admin/customizetrip" element={<AdminCustomizeTrip />} />
                     <Route path="/admin/askquestion" element={<AdminMessage />} />
                     <Route path="/login" element={<RegisterForm />} />
-                    <Route path="/admin/register" element={<LoginForm />} />
+                    <Route path="/register" element={<LoginForm />} />
+                    <Route path="/changePassword" element={<ChangePasswordForm />} />
+
                 </Routes>
             </Router>
         </QueryClientProvider>

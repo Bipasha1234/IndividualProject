@@ -5,10 +5,11 @@ import './Register.css';
 
 const RegisterForm = () => {
     const [user, setUser] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
         userName: '',
-        password: '',
-        address: ''
+        email: '',
+        password: ''
     });
 
     const handleChange = e => {
@@ -18,12 +19,7 @@ const RegisterForm = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const token = localStorage.getItem('token');
-            await axios.post('http://localhost:8081/user/save', user, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            await axios.post('http://localhost:8081/user/save', user);
             alert('User registered successfully!');
         } catch (error) {
             console.error('Error saving user:', error);
@@ -37,9 +33,17 @@ const RegisterForm = () => {
             <form onSubmit={handleSubmit} className="register-form">
                 <input
                     type="text"
-                    name="fullName"
-                    placeholder="Full Name"
-                    value={user.fullName}
+                    name="firstName"
+                    placeholder="First Name"
+                    value={user.firstName}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={user.lastName}
                     onChange={handleChange}
                     required
                 />
@@ -48,6 +52,14 @@ const RegisterForm = () => {
                     name="userName"
                     placeholder="Username"
                     value={user.userName}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={user.email}
                     onChange={handleChange}
                     required
                 />
