@@ -32,13 +32,9 @@ align-items: center;
     flex-wrap: wrap;
     margin-top: 100px;
 }
-label{
-    /*width: 30%;*/
-}
+
 .desc{
     display: flex;
-    /*justify-content: start;*/
-    /*align-items: center;*/
     flex-direction: column;
 }
 input{
@@ -61,7 +57,6 @@ height: 30px;
  }
 .blog-submit{
     background-color: #3540bb;
-    /*background-color: #4caf50;*/
     color: white;
 
     width: 77px;

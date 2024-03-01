@@ -92,7 +92,7 @@ function PackageDisplay() {
                             <td onClick={() => handleEdit(pkg)}>{pkg.packageName}</td>
                             {/*{pkg.packageImage && (*/}
                             {/*    <img*/}
-                            {/*        src={`data:image/png;base64,${pkg.packageImage}`} // Use the correct content type*/}
+                            {/*        src={`data:image/png;base64,${pkg.packageImage}`}
                             {/*        alt="Package Image"*/}
                             {/*        style={{ maxWidth: '100px' }}*/}
                             {/*    />*/}
@@ -124,7 +124,7 @@ function PackageDisplay() {
                                         <input type="file" onChange={(e) => handleImageChange(e)} />
                                         {editingPackage.packageImage && (
                                             <img
-                                                src={`data:image/png;base64,${editingPackage.packageImage}`} // Use the correct content type
+                                                src={`data:image/png;base64,${editingPackage.packageImage}`}
                                                 alt="Package Image"
                                                 style={{ maxWidth: '100px' }}
                                             />
@@ -162,8 +162,7 @@ function PackageDisplay() {
                                     </div>
                                 ) : (
                                     <>
-                                        {/* Display Package Information */}
-                                        {/* ... (display other information) */}
+
                                         <button className={'edit-btn'} onClick={() => handleEdit(pkg)}>Edit</button>
                                     </>
                                 )}

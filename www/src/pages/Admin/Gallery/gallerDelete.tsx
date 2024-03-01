@@ -28,7 +28,7 @@ function GalleryDelete() {
             });
         },
         onSuccess: () => {
-            // Invalidate and refetch data after successful deletion
+
             queryClient.invalidateQueries("GET_GALLERY_ALL");
         },
     });

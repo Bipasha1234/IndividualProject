@@ -12,18 +12,10 @@
     /*border-bottom: 1.5px solid rosybrown;*/
     backdrop-filter: blur(5px);
 }
-.search{
+.search {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 0e8c06917686239a85214260e69abffcff97c441
-}
-.search-input{
-
 }
 
 .components{
@@ -40,9 +32,6 @@
 
 }
 
-/*a{*/
-/*    color: black;*/
-/*}*/
 .destination{
     &:hover{
         color: #010462;
@@ -85,9 +74,7 @@
     font-size: 26px;
     cursor: pointer;
 }
-/* Navbar.css */
 
-/* ... (your existing styles) */
 
 .destination {
 
@@ -96,25 +83,23 @@
     margin-left: 370px;
     /*display: flex;*/
 
-}/* Style the scrollbar track */
+}
 .dropdown-content::-webkit-scrollbar {
-    width: 8px; /* Set the width of the scrollbar */
+    width: 8px;
 }
 
-/* Style the scrollbar thumb/dragger */
+
 .dropdown-content::-webkit-scrollbar-thumb {
-    background-color: #044f83; /* Set the color of the scrollbar thumb */
-    border-radius: 4px; /* Set the radius of the scrollbar thumb */
+    background-color: #044f83;
+    border-radius: 4px;
 }
 
-/* Style the scrollbar track when hovered */
 .dropdown-content::-webkit-scrollbar-track:hover {
-    background-color: #ecf0f1; /* Set the color of the scrollbar track on hover */
+    background-color: #ecf0f1;
 }
 
-/* Style the scrollbar thumb when hovered */
 .dropdown-content::-webkit-scrollbar-thumb:hover {
-    background-color: #2980b9; /* Set the color of the scrollbar thumb on hover */
+    background-color: #2980b9;
 }
 
 .dropdown-content {
@@ -123,7 +108,7 @@
     position: relative;
     max-height: 200px; overflow-y: auto;
     /*top: auto;*/
-    margin-top: 26px; /* Adjust this value according to your design preference */
+    margin-top: 26px;
     width: 350px;
     height: 200px;
     /*margin-right: 1000px;*/
@@ -153,7 +138,6 @@
 
 }
 
-/* Add more styles as needed */
 
 .logoDiv{
     /*margin-top: 24px;*/
@@ -180,19 +164,19 @@
 }
 @media screen and (max-width: 768px) {
     .components {
-        margin-right: 10px; /* Adjust margin for smaller screens */
-        gap: 10px; /* Adjust gap for smaller screens */
-        font-size: 16px; /* Adjust font size for smaller screens */
+        margin-right: 10px;
+        gap: 10px;
+        font-size: 16px;
     }
 
     .destination {
-        margin-left: 10px; /* Adjust margin for smaller screens */
+        margin-left: 10px;
     }
 
     .aboutus,
     .testimonials,
     .Gallery,
     .Blog,.destination{
-        display: none; /* Hide these components on smaller screens */
+        display: none;
     }
 }

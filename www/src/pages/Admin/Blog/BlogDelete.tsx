@@ -24,12 +24,12 @@ function BlogDelete() {
         mutationFn: (blogId) => {
             return axios.delete(`http://localhost:8081/blog/deleteById/${blogId}`, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}` // Include the token
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             });
         },
         onSuccess: () => {
-            // Invalidate and refetch data after successful deletion
+
             queryClient.invalidateQueries("GET_BLOG_ALL");
         },
     });
@@ -49,7 +49,6 @@ function BlogDelete() {
                     <thead>
                     <tr>
                         <th>BlogName</th>
-                        {/* Add more table headers as needed */}
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -73,7 +72,7 @@ function BlogDelete() {
                                     </>
                                 ) : (
                                     <>
-                                        {/* Display Package Information */}
+
                                         {pkg.blogName}
                                     </>
                                 )}
@@ -81,13 +80,13 @@ function BlogDelete() {
                             <td>
                                 {editingBlog && editingBlog.id === pkg.id ? (
                                     <>
-                                        {/* Include other fields for editing */}
+
                                         {/*<button onClick={handleUpdate}>Save</button>*/}
                                         {/*<button onClick={handleCancelEdit}>Cancel</button>*/}
                                     </>
                                 ) : (
                                     <>
-                                        {/* Action buttons */}
+
                                         {/*<button onClick={() => handleEdit(pkg)}>Edit</button>*/}
                                         <div className={'delete-btn'}>
                                             <button className={'del'} onClick={() => handleDelete(pkg.id, pkg.blogName)}>Delete</button>

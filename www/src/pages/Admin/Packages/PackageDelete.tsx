@@ -5,7 +5,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import Admin from "../Admin/Admin.tsx";
 
-function ItemDisplay() {
+function PackageDelete() {
     const queryClient = useQueryClient();
     const [editingPackage, setEditingPackage] = useState(null);
 
@@ -107,4 +107,4 @@ function ItemDisplay() {
     );
 }
 
-export default ItemDisplay;
+export default PackageDelete;

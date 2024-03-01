@@ -6,7 +6,6 @@ import PackageCreate from './pages/Admin/Packages/PackageCreate';
 import PackageDisplay from './pages/Admin/Packages/PackageDisplay';
 import TrekkingTour from './pages/TrekkingTour/TrekkingTour';
 import BlogCreate from './pages/Admin/Blog/blogCreate';
-import Admin from './pages/Admin/Admin/Admin';
 import PackageDelete from './pages/Admin/Packages/PackageDelete';
 import BlogDisplay from './pages/Admin/Blog/BlogDisplay';
 import BlogDelete from './pages/Admin/Blog/BlogDelete';

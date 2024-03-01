@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './login.css';
 function ChangePasswordForm() {
     const [formData, setFormData] = useState({
-        email: '', // Change username to email
+        email: '',
         currentPassword: '',
         newPassword: ''
     });
@@ -26,24 +26,27 @@ function ChangePasswordForm() {
     };
 
     return (
-        <div>
-            <h2>Change Password</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email:</label> {/* Change username to email */}
-                    <input type="text" name="email" value={formData.email} onChange={handleChange} /> {/* Change username to email */}
+        <div className="change-password-container">
+            <h2 className="form-title">Change Password</h2>
+            <form onSubmit={handleSubmit} className="password-form">
+                <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="email" name="email" value={formData.email} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Current Password:</label>
-                    <input type="password" name="currentPassword" value={formData.currentPassword} onChange={handleChange} />
+                <div className="form-group">
+                    <label htmlFor="currentPassword">Current Password:</label>
+                    <input type="password" id="currentPassword" name="currentPassword" value={formData.currentPassword} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>New Password:</label>
-                    <input type="password" name="newPassword" value={formData.newPassword} onChange={handleChange} />
+                <div className="form-group">
+                    <label htmlFor="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" value={formData.newPassword} onChange={handleChange} />
                 </div>
-                <button type="submit">Change Password</button>
+                <div className={'cp-div'}>
+                    <button type="submit" className="submit-btn-cp">Change Password</button>
+                </div>
+
             </form>
-            {message && <div>{message}</div>}
+            {message && <div className="message">{message}</div>}
         </div>
     );
 }

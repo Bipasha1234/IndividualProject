@@ -1,17 +1,11 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import DOMPurify from 'dompurify';
-import { Link } from 'react-router-dom';
+
 
 function BlogHome() {
     const { data, isLoading, isError } = useQuery('GET_BLOG_ALL', async () => {
-        // const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-        // const config = {
-        //     // headers: {
-        //     //     Authorization: `Bearer ${token}`
-        //     // }
-        // };
+
         const response = await axios.get('http://localhost:8081/blog/getAll');
         return response.data;
     });
@@ -35,13 +29,13 @@ function BlogHome() {
                 <div className={'next-div'}>
                     {data && data.map((blog) => (
                         <div className={'name-img-blog'} key={blog.id}>
-                            {/* Use Link to create a link to the individual blog */}
+
                             <a style={{color:'black'}} href={`/blogById/${blog.id}`}>
                                 {blog.blogImage && (
                                     <img
-                                        src={`data:image/png;base64,${blog.blogImage}`} // Use the correct content type
+                                        src={`data:image/png;base64,${blog.blogImage}`}
                                         alt="Blog Image"
-                                        style={{ maxWidth: '400px', maxHeight: '300px' }}
+                                        style={{ maxWidth: '400px', maxHeight: '240px' }}
                                     />
                                 )}
                                 <div className={'blog-name'}>

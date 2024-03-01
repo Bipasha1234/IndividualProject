@@ -19,9 +19,7 @@ const TrekkingTour = () => {
         queryFn: async () => {
 
                 const response = await axios.get(`http://localhost:8081/package/getById/${id}`, {
-                    // headers: {
-                    //     Authorization: `Bearer ${localStorage.getItem('token')}`
-                    // }
+
                 });
                 return response.data;
 
@@ -162,7 +160,7 @@ const TrekkingTour = () => {
                                 {/*    Close*/}
                                 {/*</button>*/}
                                 <button className="close-popup-button" onClick={closePopup}>
-                                    &#10005; {/* Unicode for the "x" character */}
+                                    &#10005;
                                 </button>
 
                                 <PlanTrip/>
@@ -222,7 +220,7 @@ const TrekkingTour = () => {
                 <div className={'wrap-desc'}>
                     <div className={'tt-description'}>
                         <strong style={{ fontSize: '23px' }}>About {data.packageName}</strong>
-                        {/* Sanitize package description */}
+
                         <p
                             style={{ maxWidth: '830px', overflow: 'hidden', fontSize: '16px', fontFamily: 'Yu Gothic UI' }}
                             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.packageDescription) }}
@@ -239,10 +237,10 @@ const TrekkingTour = () => {
                         />
                     </div>
 
-                    <strong style={{maxWidth: '830px' ,/* Set the maximum height as needed */
+                    <strong style={{maxWidth: '830px' ,
                         overflow: 'hidden',marginTop:'30px',fontSize:'22px'}}> Frequently Asked Questions </strong>
                     <div className={'tt-faq'}>
-                        {/* Sanitize package FAQ */}
+
                         <p
                             style={{
                                 maxWidth: '830px',

@@ -7,7 +7,7 @@
 }.n-p p:nth-child(4)::before {
      content: '';
      display: block;
-     border-top: 1px solid #c7b9b9; /* You can change the color */
+     border-top: 1px solid #c7b9b9;
      margin-bottom: 10px;
      margin-top: 5px;
  }
@@ -72,16 +72,13 @@
     font-family: Dubai;
 }
 
-
-
-    /* Navbar styles */
 .Navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000; /* Ensure the Navbar is above other elements */
-    /* Add other Navbar styles as needed */
+    z-index: 1000;
+
 }
 
 .Bname-container{
@@ -98,7 +95,6 @@
 }
 .container-booking{
     display: flex;
-    /*flex-direction: column;*/
   padding: 20px;
 
 

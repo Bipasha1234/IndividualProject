@@ -32,8 +32,6 @@
     background-color: #d9534f;
     margin-left: 10px;
 }
-/* packageDisplay.css */
-/* Add your CSS styles here */
 
 .parent {
     display: flex;
@@ -82,5 +80,3 @@ th {
     border-radius: 5px;
     cursor: pointer;
 }
-
-/* Add more styles as needed */

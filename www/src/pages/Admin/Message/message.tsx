@@ -7,13 +7,13 @@ const AdminMessage = () => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+        const token = localStorage.getItem('token');
 
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/message/getAll', {
                     headers: {
-                        Authorization: `Bearer ${token}`, // Include the token in the headers
+                        Authorization: `Bearer ${token}`,
                     },
                 });
                 setMessages(response.data);
@@ -26,7 +26,7 @@ const AdminMessage = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+        const token = localStorage.getItem('token');
 
         const confirmed = window.confirm('Are you sure you want to delete this message?');
 
@@ -34,7 +34,7 @@ const AdminMessage = () => {
             try {
                 await axios.delete(`http://localhost:8081/message/deleteById/${id}`, {
                     headers: {
-                        Authorization: `Bearer ${token}`, // Include the token in the headers
+                        Authorization: `Bearer ${token}`,
                     },
                 });
                 setMessages(messages.filter(message => message.id !== id));

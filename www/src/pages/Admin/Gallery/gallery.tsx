@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
+
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
 import {useMutation, useQuery, useQueryClient} from 'react-query';
 import { useForm } from 'react-hook-form';
-// import './blogCreate.css'
+
 import Admin from '../Admin/Admin.tsx';
-// import BlogDisplay from './BlogDisplay'; // Import the BlogDisplay component
 
 import './PhotoUpload.css';
 function AdminGallery() {
@@ -15,14 +14,14 @@ function AdminGallery() {
     const [imageFile, setImageFile] = useState(null); //
 
 
-    const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    const token = localStorage.getItem('token');
 
     const { data } = useQuery({
         queryKey: ['GET_GALLERY_ALL'],
         queryFn() {
             return axios.get('http://localhost:8081/gallery/getAll', {
                 headers: {
-                    Authorization: `Bearer ${token}`, // Include the token in the headers
+                    Authorization: `Bearer ${token}`,
                 },
             });
         },
@@ -42,33 +41,26 @@ function AdminGallery() {
                     },
                 });
 
-                // Do something with the response if needed
                 console.log(response.data);
 
-                // Display success message using alert
-                alert('Blog created successfully!');
+                alert('Image uploaded succesfully!');
 
                 return response.data;
             } catch (error) {
                 // Handle errors
                 console.error('Error:', error);
-                throw error; // Rethrow the error to propagate it to the component
+                throw error;
             }
         },
     });
 
     const { register, handleSubmit } = useForm();
-    // const [blogDescription, setBlogDescription] = useState('');
 
-    // const handleDescriptionChange = (value) => {
-    //     setBlogDescription(value);
-    // };
     const updateBlog = useMutation({
         mutationKey: ['UPDATE_BLOG'],
         mutationFn: (updatedBlog) => {
             const formData = new FormData();
 
-            // Check if a new image is selected
             if (imageFile) {
                 formData.append('galleryImage', imageFile);
             }
@@ -106,11 +98,8 @@ function AdminGallery() {
 
     const onSubmit = (data) => {
         const formData = new FormData();
-        // formData.append('blogName', data.blogName);
-        // formData.append('blogDescription', blogDescription); // Use the state for blogDescription
 
-        // Append the blogImage file
-        formData.append('galleryImage', data.galleryImage[0]); // Assuming blogImage is a file input
+        formData.append('galleryImage', data.galleryImage[0]);
 
         apiCall.mutate(formData);
     };
@@ -149,7 +138,7 @@ function AdminGallery() {
 
                                 {gallery.galleryImage && (
                                     <img
-                                        src={`data:image/png;base64,${gallery.galleryImage}`} // Use the correct content type
+                                        src={`data:image/png;base64,${gallery.galleryImage}`}
                                         alt="Gallery Image"
                                         style={{ width: '200px',height:'200px' }}
                                     />
@@ -165,12 +154,12 @@ function AdminGallery() {
                                             <input type="file" onChange={(e) => handleImageChange(e)} />
                                             {editingBlog.galleryImage && (
                                                 <img
-                                                    src={`data:image/png;base64,${editingBlog.galleryImage}`} // Use the correct content type
+                                                    src={`data:image/png;base64,${editingBlog.galleryImage}`}
                                                     alt="Blog Image"
                                                     style={{ maxWidth: '100px' }}
                                                 />
                                             )}
-                                            {/* Add other fields for editing */}
+
                                             <div className="actions">
                                                 <button onClick={handleUpdate}>Save</button>
                                                 <button className="cancel" onClick={handleCancelEdit}>
@@ -201,10 +190,5 @@ function AdminGallery() {
 }
 
 export default AdminGallery;
-
-
-
-    // ... (previous code)
-
 
 

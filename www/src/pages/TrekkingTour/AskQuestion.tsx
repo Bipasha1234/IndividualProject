@@ -12,7 +12,7 @@ interface ReviewData {
 
 }
 
-function PlanTrip() {
+function AskQn() {
     const [messageName, setmessageName] = useState('');
     const [messageEmail, setmessageEmail] = useState('');
     const [messageNumber, setmessageNumber] = useState('');
@@ -26,21 +26,7 @@ function PlanTrip() {
         messageMsg: '',
 
     });
-    //
-    // const mutation = useMutation(
-    //     (formData: ReviewData) =>
-    //         axios.post('http://localhost:8081/message/save', formData),
-    //     {
-    //         onSuccess: () => {
-    //             // Handle success, maybe refetch data or update local state
-    //             console.log('Message submitted successfully');
-    //         },
-    //         onError: (error) => {
-    //             // Handle error, show an error message or log the error
-    //             console.error('Error submitting message:', error);
-    //         },
-    //     }
-    // );
+
     const validateForm = () => {
         let valid = true;
         const newErrors = { ...formErrors };
@@ -76,14 +62,12 @@ function PlanTrip() {
     };
     const mutation = useMutation(
         (formData: ReviewData) => Axios.post('http://localhost:8081/message/save', formData, {
-            // headers: {
-            //     Authorization: `Bearer ${localStorage.getItem('token')}` // Include token in the request headers
-            // }
+
         }),
         {
             onSuccess: (response) => {
                 console.log('Message saved successfully:', response.data);
-                // Add your logic after successful mutation if needed
+
             },
             onError: (error) => {
                 console.error('Error saving message:', error);
@@ -102,7 +86,7 @@ function PlanTrip() {
                 messageMsg: messageMsg,
             });
 
-            // Clear form fields after submission
+
             setmessageName('');
             setmessageNumber('');
             setmessageEmail('');
@@ -203,4 +187,4 @@ function PlanTrip() {
     );
 }
 
-export default PlanTrip;
+export default AskQn;

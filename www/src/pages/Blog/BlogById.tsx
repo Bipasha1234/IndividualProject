@@ -10,14 +10,12 @@ function BlogById() {
     const { data, isLoading, isError } = useQuery(['GET_BLOG_BY_ID', id], async () => {
         try {
             const response = await axios.get(`http://localhost:8081/blog/getById/${id}`, {
-                // headers: {
-                //     Authorization: `Bearer ${localStorage.getItem('token')}`
-                // }
+
             });
-            console.log('Data fetched:', response.data); // Log the fetched data
+            console.log('Data fetched:', response.data);
             return response.data;
         } catch (error) {
-            console.error('Error fetching package details:', error); // Log any errors
+            console.error('Error fetching package details:', error);
             throw error;
         }
     });

@@ -1,4 +1,3 @@
-// Photo.tsx
 
 import React, { useEffect, useState } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
@@ -11,7 +10,7 @@ import Footer from "../Footer/Footer.tsx";
 
 interface Photo {
     id: number;
-    galleryImage: string; // Assuming galleryImage is a base64-encoded string
+    galleryImage: string;
 }
 
 const Photo: React.FC = () => {
@@ -19,15 +18,9 @@ const Photo: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
     useEffect(() => {
-        // Assuming you have a token stored in localStorage
-        // const token = localStorage.getItem('token');
-
-        // Check if token exists
 
         axios.get('http://localhost:8081/gallery/getAll', {
-            // headers: {
-            //     Authorization: `Bearer ${token}` // Assuming it's a bearer token
-            // }
+
         })
             .then((response) => {
                 setPhotos(response.data);

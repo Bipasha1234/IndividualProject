@@ -1,147 +1,92 @@
-/* Home.css */
-
-body {
-    margin: 0;
-    /*height: auto;*/
-}
-.main-div-package{
-    margin-top: 1150px;
-    padding: 30px;
-}
-.blog-pkg{
-    display: flex;
-  flex-direction: column;
-    margin-top: 2000px;
-}
-.main-div-home{
-/*margin-bottom: -3000px;*/
-    padding: 30px;
-}
-
-
-
 
 .Home {
-    position: relative;
-    height: 80vh;
-    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+
 }
 
 .image-container {
-    position: absolute;
-    top:0;
+    position: relative;
     width: 100%;
+    max-width: 1300px;
 }
 
-img {
-    max-width: 100%;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
+
 
 .image-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 800px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: white;
     text-align: center;
 }
 
 .sectionText {
-    position: relative;
-    z-index: 1;
-
-    h1 {
-        font-size: 4vw;
-        font-weight: 900;
-        margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 2vw;
-        font-weight: 500;
-        padding: 1rem 0;
-    }
-
-    .btn {
-        color: white;
-        background-color: rgb(31, 29, 29);
-        margin-top: 10px;
-        padding: 10px 20px;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .btn:hover {
-        color: black;
-        background-color: rgb(187, 187, 243);
-    }
+    padding: 20px;
+    font-size: 30px;
+}
+.search-btn-home{
+    font-size: 23px;
 }
 
 .box {
-    position: absolute;
-    bottom: -20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 600px;
-    height: 125px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*background-color: white;*/
-    /*border: 1px solid black;*/
-    /*border-radius: 8px;*/
-    /*box-sizing: border-box;*/
-    /*padding: 20px;*/
+    margin-top: 20px;
 }
 
 .box-row {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    font-size: 18px;
     justify-content: center;
     align-items: center;
 }
-.home-Input{
-    width:400px;
-    height: 40px;
-    padding: 20px;
-}
 
-.box-row > div {
-    flex: 1;
-}
-
-.search-btn-home {
-    background-color: rgb(107, 41, 229);
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    max-width: 150px;
-    cursor: pointer;
+.home-Input {
     padding: 10px;
+    border: 2px solid #6b6a6a;
+    border-radius: 5px;
+
+    margin-right: 10px;
+    width: 100vh;
+    font-weight: bold;
+    height: 7vh;
+}
+.home-Input::placeholder{
+    color: #3a3838;
 
 }
 
-/* Media Queries */
+.blog-pkg {
+    margin-top: 50px;
+}
 
-/* Larger Screens */
-/* Previous CSS code remains unchanged */
+.main-div-package {
+    text-align: start;
+}
 
-/* Media Queries for .box */
+.next-div {
+    display: flex;
+    flex-wrap: wrap;
+margin-bottom: 50px;
+    justify-content: center;
+}
 
+.name-img-blog {
+    margin: 10px;
+    max-width: 350px;
+    max-height: 330px;
+    text-align: start;
+
+}
+
+
+.blog-name {
+    margin-top: 0px;
+}
 

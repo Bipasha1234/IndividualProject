@@ -9,20 +9,19 @@ import 'react-quill/dist/quill.snow.css';
 function BlogDisplay() {
     const queryClient = useQueryClient();
     const [editingBlog, setEditingBlog] = useState(null);
-    const [imageFile, setImageFile] = useState(null); // Add this line to initialize the image file state
+    const [imageFile, setImageFile] = useState(null);
 
     const { data } = useQuery({
         queryKey: ['GET_BLOG_ALL'],
         queryFn() {
             return axios.get('http://localhost:8081/blog/getAll', {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}` // Include the token
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             });
         },
     });
 
-    // ... (previous code)
 
     const updateBlog = useMutation({
         mutationKey: ['UPDATE_BLOG'],

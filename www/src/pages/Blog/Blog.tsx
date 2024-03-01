@@ -1,20 +1,17 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import DOMPurify from 'dompurify';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+
 import Navbar from "../Navbar/Navbar.tsx";
 import './Blog.css';
 import Footer from "../Footer/Footer.tsx";
 
 function BlogList() {
-    // const token = localStorage.getItem('token'); // Get the JWT token from localStorage
+
 
     const { data, isLoading, isError } = useQuery('GET_BLOG_ALL', async () => {
         const response = await axios.get('http://localhost:8081/blog/getAll', {
-            // headers: {
-            //     Authorization: `Bearer ${token}` // Include the JWT token in the Authorization header
-            // }
+
         });
         return response.data;
     });
@@ -37,13 +34,13 @@ function BlogList() {
                 <div className={'next-div'}>
                     {data && data.map((blog) => (
                         <div className={'name-img-blog'} key={blog.id}>
-                            {/* Use Link to create a link to the individual blog */}
+
                             <a style={{color:'black'}} href={`/blogById/${blog.id}`}>
                                 {blog.blogImage && (
                                     <img
-                                        src={`data:image/png;base64,${blog.blogImage}`} // Use the correct content type
+                                        src={`data:image/png;base64,${blog.blogImage}`}
                                         alt="Blog Image"
-                                        style={{ maxWidth: '400px', maxHeight: '300px' }}
+                                        style={{ maxWidth: '400px', maxHeight: '240px' }}
                                     />
                                 )}
                                 <div className={'blog-name'}>

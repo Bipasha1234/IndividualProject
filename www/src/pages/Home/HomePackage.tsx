@@ -2,14 +2,9 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-function BlogList({ searchCriteria }) {
+function PackageHome({ searchCriteria }) {
     const { data, isLoading, isError } = useQuery('GET_PKG_ALL', async () => {
-        // const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-        // const config = {
-        //     headers: {
-        //         Authorization: `Bearer ${token}`
-        //     }
-        // };
+
         const response = await axios.get('http://localhost:8081/package/getAll');
         return response.data;
     });
@@ -35,13 +30,13 @@ function BlogList({ searchCriteria }) {
             <div className={'next-div'}>
                 {filteredPkgs.map((pkg) => (
                     <div className={'name-img-blog'} key={pkg.id}>
-                        {/* Use Link to create a link to the individual package */}
+
                         <a style={{ color: 'black' }} href={`/trekkingTour/${pkg.id}`}>
                             {pkg.packageImage && (
                                 <img
-                                    src={`data:image/png;base64,${pkg.packageImage}`} // Use the correct content type
+                                    src={`data:image/png;base64,${pkg.packageImage}`}
                                     alt="Package Image"
-                                    style={{ maxWidth: '400px', maxHeight: '300px' }}
+                                    style={{ maxWidth: '400px', maxHeight: '260px' }}
                                 />
                             )}
                             <div className={'blog-name'}>
@@ -55,4 +50,4 @@ function BlogList({ searchCriteria }) {
     );
 }
 
-export default BlogList;
+export default PackageHome;

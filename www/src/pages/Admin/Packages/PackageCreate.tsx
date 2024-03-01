@@ -22,17 +22,15 @@ function PackageCreate() {
                     },
                 });
 
-                // Do something with the response if needed
                 console.log(response.data);
 
-                // Display success message using alert
                 alert('Package created successfully!');
 
                 return response.data;
             } catch (error) {
-                // Handle errors
+
                 console.error('Error:', error);
-                throw error; // Rethrow the error to propagate it to the component
+                throw error;
             }
         },
     });
@@ -40,7 +38,7 @@ function PackageCreate() {
         toolbar: [
             ['bold', 'italic', 'underline', 'strike'],
             [{ 'header': 1 }, { 'header': 2 }],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Use 'list' instead of 'list-ordered'
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
             ['blockquote', 'code-block'],
             ['link', 'image'],
             ['clean'],
@@ -77,12 +75,12 @@ function PackageCreate() {
         formData.append('packageMaxAltitude', data.packageMaxAltitude);
         formData.append('packageBestTime', data.packageBestTime);
         formData.append('packageDuration', data.packageDuration);
-        formData.append('packageItinerary', packageItinerary); // Use packageItinerary state
+        formData.append('packageItinerary', packageItinerary);
         formData.append('packageFaq', packageFaq);
         formData.append('packageDescription', packageDescription);
 
-        // Append the packageImage file
-        formData.append('packageImage', data.packageImage[0]); // Assuming packageImage is a file input
+
+        formData.append('packageImage', data.packageImage[0]);
 
         apiCall.mutate(formData);
     };

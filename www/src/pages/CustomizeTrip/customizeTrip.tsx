@@ -5,7 +5,7 @@ import './customizeTrip.css'
 import Navbar from "../Navbar/Navbar.tsx";
 import { useMutation } from "react-query";
 import Footer from "../Footer/Footer.tsx";
-// import "./planTrip.css";
+
 
 
 
@@ -54,7 +54,7 @@ function PlanTrip() {
         approxDate:'',
         tripLength:'',
         numberOfAdults:'',numberOfChildren:'',tourType:'',hotelType:'',estimatedBudget:'',guideLanguage:'',moreInfo:'',whereDidYouFindUs:'',
-        // ... initialize other fields here
+
     });
 
 
@@ -79,9 +79,6 @@ function PlanTrip() {
             newErrors.phoneNumber = '';
         }
 
-
-
-        // Validate email address (you might want to improve this validation)
         if (!emailAddress.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress)) {
             newErrors.emailAddress = 'Valid email address is required.';
             valid = false;
@@ -160,16 +157,16 @@ function PlanTrip() {
     const mutation = useMutation(
         (formData: TravelData) =>
             Axios.post("http://localhost:8081/customize/save", formData, {
-                // headers: { authorization: "Bearer " + localStorage.getItem("token") }
+
             }),
         {
             onSuccess: (data) => {
                 console.log("Trip saved successfully:", data);
-                // Handle any other success-related logic if needed
+
             },
             onError: (error) => {
                 console.error("Error saving trip:", error);
-                // Handle any error-related logic if needed
+
             },
         }
     );
@@ -178,7 +175,7 @@ function PlanTrip() {
 
     const submit = () => {
         if (validateForm()) {
-            // Use the mutate function provided by useMutation to trigger the API call
+
             mutation.mutate({
                 fullName,
                 phoneNumber: phoneNumber,
@@ -194,7 +191,7 @@ function PlanTrip() {
                 guideLanguage,
                 moreInfo: moreInfo ,
                 whereDidYouFindUs,
-                // Include other fields here
+
             });
 
             setTravelList([
@@ -214,11 +211,10 @@ function PlanTrip() {
                     guideLanguage,
                     moreInfo,
                     whereDidYouFindUs,
-                    // Include other fields here
+
                 },
             ]);
 
-            // Clear form fields after submission
             setFullName("");
             setPhoneNumber("");
             setEmailAddress("");

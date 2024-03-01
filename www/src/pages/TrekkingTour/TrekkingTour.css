@@ -6,10 +6,7 @@ body{
     font-family: "Arial Unicode MS";
     padding: 30px;
     position: relative;
-   /* Adjust the padding-top as needed */
-}/* TrekkingTour.css */
-/* Add this CSS to your TrekkingTour.css file or create a new CSS file */
-
+}
 .customize-button-container {
     text-align: center;
      display: flex;
@@ -61,7 +58,6 @@ gap: 40px; max-width: 840px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ... (rest of your styles) */
 
 .tt-container p {
     /*margin-bottom: 100px;*/
@@ -85,10 +81,10 @@ gap: 40px; max-width: 840px;
 }
 .h1{
   padding: 10px;
-}/* TrekkingTour.css or your existing stylesheet */
+}
 .line-above-name {
-    border-top: 2px solid #000; /* Adjust the border style as needed */
-    margin-bottom: 10px; /* Adjust the margin as needed */
+    border-top: 2px solid #000;
+    margin-bottom: 10px;
     width: 100%;
     margin-top: 80px;
 }
@@ -193,9 +189,6 @@ width: 49vh;
 
 }
 
-/* Add this to your TrekkingTour.css or your styling file */
-
-/* Styling for Plus and Minus Buttons */
 .box-tt button {
     padding: 10px;
     margin: 5px;
@@ -281,27 +274,21 @@ align-items: center;
 
 }
 
-   /*.image-container img {*/
-   /*    max-width: 100%;*/
-   /*height: auto;*/
-   /*    margin-top: 300px;*/
-
-   /*}*/
 .question-popup {
     position: fixed;
 margin-top: -110px;
     right: 0;
-    width: 50%; /* Adjust the width of the popup as needed */
+    width: 50%;/
     height: 100vh;
     background-color: white;
     z-index: 999;
     overflow-y: auto;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for better visibility */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .popup-content {
     padding: 20px;
-    position: relative; /* Add relative positioning for absolute positioning of close button */
+    position: relative;
 }
 
 .close-popup-button {

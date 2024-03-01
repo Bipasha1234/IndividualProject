@@ -1,10 +1,11 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Admin.css';
 import { SiYourtraveldottv } from 'react-icons/si';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import {useParams} from "react-router";
+import {Button} from "react-query/types/devtools/styledComponents";
 
 function Admin() {
     const [showBlogSubButtons, setShowBlogSubButtons] = useState(false);
@@ -12,15 +13,14 @@ function Admin() {
     const [showPackageSubButtons, setShowPackageSubButtons] = useState(false);
     const { id } = useParams();
 
-    // Function to handle logout
+
     const handleLogout = () => {
-        // Clear authentication state (e.g., remove token from localStorage)
+
         localStorage.removeItem('token');
-        // Redirect user to login page
+
         window.location.href = '/login';
     };
 
-    // Fetch package details based on the provided ID
     const { data: packageData } = useQuery({
         queryKey: ['GET_PACKAGE_BY_ID', id],
         queryFn: () =>
@@ -60,7 +60,7 @@ function Admin() {
                         </div>
                         <div className={'buttons'}>
                             <div className={'package'}>
-                                <Link onClick={toggleBlogSubButtons}>Packages</Link>
+                                <div style={{color:"white",cursor:'pointer'}} onClick={toggleBlogSubButtons}>Packages</div>
                                 {showBlogSubButtons && (
                                     <div className={'sub-buttons'}>
                                         <Link to={'/admin/uploadPackages'}>- Post Packages</Link>
@@ -70,7 +70,7 @@ function Admin() {
                                 )}
                             </div>
                             <div className={'blog'}>
-                                <Link onClick={togglePackageSubButtons}>Blog</Link>
+                                <div style={{color:"white",cursor:'pointer'}} onClick={togglePackageSubButtons}>Blog</div>
                                 {showPackageSubButtons && (
                                     <div className={'sub-buttons'}>
                                         <Link to={'/admin/blogCreate'}>- Post Blogs</Link>
@@ -80,7 +80,7 @@ function Admin() {
                                 )}
                             </div>
                             <div className={'gallery'}>
-                                <Link onClick={toggleGallerySubButtons}>Gallery</Link>
+                                <div style={{color:"white",cursor:'pointer'}} onClick={toggleGallerySubButtons}>Gallery</div>
                                 {showGallerySubButtons && (
                                     <div className={'sub-buttons'}>
                                         <Link to={'/admin/gallery'}>- Post & Edit Gallery</Link>

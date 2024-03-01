@@ -6,7 +6,7 @@ import { useMutation } from 'react-query';
 import { useForm } from 'react-hook-form';
 import './blogCreate.css'
 import Admin from '../Admin/Admin.tsx';
-// import BlogDisplay from './BlogDisplay'; // Import the BlogDisplay component
+
 
 
 function BlogCreate() {
@@ -16,7 +16,6 @@ function BlogCreate() {
             try {
                 console.log(formData);
 
-                // Make the POST request with FormData
                 const response = await axios.post('http://localhost:8081/blog/save', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
@@ -24,17 +23,15 @@ function BlogCreate() {
                     },
                 });
 
-                // Do something with the response if needed
                 console.log(response.data);
 
-                // Display success message using alert
                 alert('Blog created successfully!');
 
                 return response.data;
             } catch (error) {
                 // Handle errors
                 console.error('Error:', error);
-                throw error; // Rethrow the error to propagate it to the component
+                throw error;
             }
         },
     });
@@ -46,14 +43,13 @@ function BlogCreate() {
         setBlogDescription(value);
     };
 
-
     const onSubmit = (data) => {
         const formData = new FormData();
         formData.append('blogName', data.blogName);
-        formData.append('blogDescription', blogDescription); // Use the state for blogDescription
+        formData.append('blogDescription', blogDescription);
 
         // Append the blogImage file
-        formData.append('blogImage', data.blogImage[0]); // Assuming blogImage is a file input
+        formData.append('blogImage', data.blogImage[0]);
 
         apiCall.mutate(formData);
     };

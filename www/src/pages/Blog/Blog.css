@@ -28,7 +28,7 @@
     font-size: 17px;
     font-family: Arial, Helvetica, sans-serif;
     max-width: 350px;
-    word-break: break-word; /* Allow the blog name to break onto the next line */
+    word-break: break-word;
 }
 .blog-container {
     margin-top: 65px;
@@ -50,7 +50,7 @@
     flex-direction: column;
     gap: 10px;
     width: 372px;
-    height: 400px; /* Set a fixed height for each blog */
+    height: 400px;
 }
 
 @media (max-width: 1200px) {

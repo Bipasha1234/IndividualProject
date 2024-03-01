@@ -16,7 +16,7 @@ interface TravelData {
     bookingExtra: string;packageId: string;
 }
 
-function PlanTrip() {
+function Booking() {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [bookingName, setBookingName] = useState("");
@@ -84,7 +84,7 @@ function PlanTrip() {
 
         if (!bookingExtra.trim()) {
             newErrors.bookingExtra =
-                "Extra Requirements is required."; // Validation for the new field
+                "Extra Requirements is required.";
             valid = false;
         } else {
             newErrors.bookingExtra = "";
@@ -97,11 +97,9 @@ function PlanTrip() {
     useEffect(() => {
         const fetchPackageDetails = async () => {
             try {
-                // const token = localStorage.getItem('token');
+
                 const response = await Axios.get(`http://localhost:8081/package/getById/${id}`, {
-                    // headers: {
-                    //     Authorization: `Bearer ${token}`
-                    // }
+
                 });
                 const packageData = response.data;
                 setData(packageData);
@@ -130,9 +128,9 @@ function PlanTrip() {
     const mutation = useMutation(
         (formData: TravelData) =>
             Axios.post("http://localhost:8081/booking/save", formData, {
-                // headers: {
-                //     Authorization: `Bearer ${localStorage.getItem('token')}` // Include token in the request headers
-                // }
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
             }),
         {
             onSuccess: (data) => {
@@ -151,16 +149,16 @@ function PlanTrip() {
                 bookingEmail,
                 bookingTripDate,
                 bookingTravellers,
-                bookingExtra,packageId // Added field
+                bookingExtra,packageId
             });
 
-            // Clear form fields after submission
+
             setBookingName("");
             setBookingPhoneNumber("");
             setBookingEmail("");
             setBookingTripDate("");
             setBookingTravellers("");
-            setBookingExtra(""); // Added field
+            setBookingExtra("");
         }
     };
 
@@ -344,7 +342,7 @@ function PlanTrip() {
                         <div>
                             {data.packageImage && (
                                 <img
-                                    src={`data:image/png;base64,${data.packageImage}`} // Use the correct content type
+                                    src={`data:image/png;base64,${data.packageImage}`}
                                     alt="Package Image"
                                     style={{ height:'250px',borderRadius:'5px' }}
                                 />
@@ -383,4 +381,4 @@ function PlanTrip() {
     );
 }
 
-export default PlanTrip;
+export default Booking;

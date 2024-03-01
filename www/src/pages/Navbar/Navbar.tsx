@@ -1,5 +1,5 @@
 import './Navbar.css';
-import { CiSearch } from "react-icons/ci";
+
 import { SiYourtraveldottv } from "react-icons/si";
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
@@ -9,16 +9,13 @@ const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [packages, setPackages] = useState([]);
 
-    const token = localStorage.getItem('token'); // Retrieve token from local storage
 
     useEffect(() => {
-        // Fetch data from the backend when the component mounts
+
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/package/getAll', {
-                    // headers: {
-                    //     Authorization: `Bearer ${token}` // Include token in the request headers
-                    // }
+
                 });
                 setPackages(response.data);
             } catch (error) {
@@ -27,7 +24,7 @@ const Navbar = () => {
         };
 
         fetchData();
-    }, [token]);
+    }, []);
     const toggleDropdown = (e) => {
         e.stopPropagation();
         setShowDropdown((prev) => !prev);

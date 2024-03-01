@@ -1,4 +1,4 @@
-package com.example.individualprojectspringboot.Request;
+package com.example.individualprojectspringboot.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

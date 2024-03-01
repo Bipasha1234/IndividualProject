@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Admin from "../Admin/Admin.tsx";
-import './customizeTrip.css'; // Import the CSS file
+import './customizeTrip.css';
 
 const AdminCustomizeTrip = () => {
     const [customizeTrips, setCustomizeTrips] = useState([]);
@@ -35,7 +35,7 @@ const AdminCustomizeTrip = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                // After deletion, you might want to update the UI by fetching data again or removing the deleted item from the state
+
                 setCustomizeTrips(customizeTrips.filter(trip => trip.id !== id));
             } catch (error) {
                 console.error('Error deleting customize trip:', error);

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { AiOutlineSwapRight } from 'react-icons/ai';
+
 import Navbar from '../Navbar/Navbar.tsx';
-// import HomePackage from './HomePackage.tsx';
-import BlogList from '../Home/HomePackage.tsx';
+
 import './Home.css'
 import BlogHome from "./HomeBlog.tsx";
 import Footer from "../Footer/Footer.tsx";
+import { FaSearch } from 'react-icons/fa';
+import PackageHome from "../Home/HomePackage.tsx";
 
 const Home = () => {
     const [searchCriteria, setSearchCriteria] = useState({
@@ -13,11 +14,6 @@ const Home = () => {
 
     });
 
-    const handleSearch = () => {
-        // Perform the search logic here
-        // You can use the searchCriteria to filter the blogs
-        // Update the state or pass the criteria to the BlogList component
-    };
 
 
     return (
@@ -31,10 +27,7 @@ const Home = () => {
             <div className="sectionText">
               <h1 className={'h'}>Unlock your travel dreams with me</h1>
               <p className={'p1'}>Travel is the best. You should also come along with us.</p>
-              {/*<button className={'btn'}>*/}
-              {/*  Get Started*/}
-              {/*  <AiOutlineSwapRight className={'icon'} />*/}
-              {/*</button>*/}
+
             </div>
           </div>
         </div>
@@ -50,8 +43,10 @@ const Home = () => {
 
                         <input
                             className={'home-Input'}
-                            placeholder='Where do you want to go?'
+                            placeholder='What Trekking and Tour packages do you want?'
+
                             value={searchCriteria.packageName}
+
 
                             onChange={(e) =>
                                 setSearchCriteria((prev) => ({
@@ -59,15 +54,13 @@ const Home = () => {
                                     packageName: e.target.value,
                                 }))
                             }
+
                         />
                     </div>
-
-
-                    <div className='btn-search'>
-                        <button className='search-btn-home' onClick={handleSearch}>
-                            Search
-                        </button>
+                    <div className='search-btn-home' >
+                        <FaSearch />
                     </div>
+
                 </div>
             </div>
 
@@ -76,7 +69,7 @@ const Home = () => {
             <div className={'blog-pkg'}>
 
 
-                <BlogList searchCriteria={searchCriteria} />
+                <PackageHome searchCriteria={searchCriteria} />
                 <BlogHome />
             </div>
 
