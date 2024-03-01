@@ -18,12 +18,5 @@ public interface BookingService {
 
         void deleteById(Integer id);
 
-//        void updateBlog(Integer id, BlogPojo updatedBlogPojo) throws IOException;
-
-
-
-
-
-
 
 }

@@ -1,14 +1,13 @@
 package com.example.individualprojectspringboot.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 @Setter
 @Getter
 @Entity
 @Table(name="blogs")
 public class Blog {
-
         @Id
         @SequenceGenerator(name = "blog_seq_gen", sequenceName = "blog_id_seq", allocationSize = 1)
         @GeneratedValue(generator = "blog_seq_gen", strategy = GenerationType.SEQUENCE)
@@ -22,7 +21,6 @@ public class Blog {
 
         @Column(name = "blog_description", nullable = false, length = 255)
         private String blogDescription;
-
 
     }
 

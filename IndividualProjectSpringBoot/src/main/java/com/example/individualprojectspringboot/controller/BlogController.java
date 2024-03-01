@@ -1,5 +1,4 @@
 package com.example.individualprojectspringboot.controller;
-
 import com.example.individualprojectspringboot.entity.Blog;
 import com.example.individualprojectspringboot.entity.Package;
 import com.example.individualprojectspringboot.pojo.BlogPojo;
@@ -17,15 +16,12 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 public class BlogController {
-
     private final BlogService blogService;
-
         @PostMapping("/save")
         public String saveBlog(@RequestBody @ModelAttribute BlogPojo blogPojo) throws IOException {
             blogService.saveBlog(blogPojo);
             return "data created successfully yohhh";
         }
-
         @GetMapping("/getAll")
         public List<Blog> findAll(){
             return blogService.findAll();
@@ -37,7 +33,6 @@ public class BlogController {
         }
 
         @DeleteMapping("/deleteById/{id}")
-
         public void deleteById(@PathVariable("id") Integer id){
             blogService.deleteById(id);
         }

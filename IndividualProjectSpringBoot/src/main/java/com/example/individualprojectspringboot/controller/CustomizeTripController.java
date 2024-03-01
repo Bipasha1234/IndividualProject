@@ -15,38 +15,22 @@ import java.util.List;
 @RequestMapping("/customize")
 @RestController
 @RequiredArgsConstructor
-
-
 public class CustomizeTripController {
-
         private final CustomizeTripService customizeTripService;
-
         @PostMapping("/save")
         public String saveTrip(@RequestBody @Valid CustomizeTripPojo customizeTripPojo) throws IOException {
             customizeTripService.saveTrip(customizeTripPojo);
             return "data created successfully yohhh";
         }
-
         @GetMapping("/getAll")
         public List<CustomizeTrip> findAll(){
             return customizeTripService.findAll();
         }
-
-//        @GetMapping("/getById/{id}")
-//        public Optional<Blog> findById(@PathVariable("id") Integer id){
-//            return messageService.findById(id);
-//        }
-
         @DeleteMapping("/deleteById/{id}")
         public void deleteById(@PathVariable("id") Integer id){
             customizeTripService.deleteById(id);
         }
 
-//        @PutMapping("/update/{id}")
-//        public String updateBlog(@PathVariable("id") Integer id, @RequestBody @ModelAttribute BlogPojo updatedBlogPojo) throws IOException {
-//            blogService.updateBlog(id, updatedBlogPojo);
-//            return "data updated successfully";
-//        }
     }
 
 

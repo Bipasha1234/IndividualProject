@@ -15,13 +15,6 @@ public class GalleryPojo {
         private MultipartFile galleryImage;
 
 
-
-
-
-
-
-
-
     }
 
 

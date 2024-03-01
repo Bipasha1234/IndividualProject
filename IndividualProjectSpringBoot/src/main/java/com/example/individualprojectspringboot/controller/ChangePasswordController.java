@@ -1,6 +1,6 @@
 package com.example.individualprojectspringboot.controller;
-import com.example.individualprojectspringboot.Request.ChangePasswordRequest;
-import com.example.individualprojectspringboot.Request.ChangePasswordResponse;
+import com.example.individualprojectspringboot.pojo.ChangePasswordRequest;
+import com.example.individualprojectspringboot.pojo.ChangePasswordResponse;
 
 import com.example.individualprojectspringboot.service.ChangePasswordServicee;
 import lombok.RequiredArgsConstructor;

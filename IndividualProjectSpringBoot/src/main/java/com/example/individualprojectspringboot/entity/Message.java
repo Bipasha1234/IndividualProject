@@ -1,13 +1,12 @@
 package com.example.individualprojectspringboot.entity;
-
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-
+import lombok.*;
 @Setter
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name="message")
 public class Message {
         @Id
@@ -26,8 +25,6 @@ public class Message {
 
     @Column(name = "message_msg", nullable = false, length = 1000)
     private String messageMsg;
-
-
     }
 
 

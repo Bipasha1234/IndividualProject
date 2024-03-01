@@ -28,9 +28,11 @@ public class UserRepositoryTests {
     @Rollback(value = false)
     public void saveUser() {
         User user = User.builder()
-                .fullName("bIPASHA")
-                .userName("bipasha")
+                .firstName("bIPASHA")
+                .lastName("bipasha")
                 .password("123456")
+                .userName("bipu")
+                .email("bipasha@gmail.com")
                 .build();
 
         userRepository.save(user);
@@ -64,9 +66,9 @@ public class UserRepositoryTests {
         User user = userOptional.orElse(null);
         Assertions.assertThat(user).isNotNull();
 
-        user.setFullName("bIPASHA");
+        user.setFirstName("bIPASHA");
         User updatedUser = userRepository.save(user);
-        Assertions.assertThat(updatedUser.getFullName()).isEqualTo("bIPASHA");
+        Assertions.assertThat(updatedUser.getFirstName()).isEqualTo("bIPASHA");
     }
 
     @Test

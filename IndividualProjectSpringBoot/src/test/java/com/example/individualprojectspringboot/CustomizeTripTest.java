@@ -1,70 +1,67 @@
-import com.example.individualprojectspringboot.controller.CustomizeTripController;
+package com.example.individualprojectspringboot;
+
 import com.example.individualprojectspringboot.entity.CustomizeTrip;
-import com.example.individualprojectspringboot.pojo.CustomizeTripPojo;
-import com.example.individualprojectspringboot.service.CustomizeTripService;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.mock.web.MockMultipartFile;
+import com.example.individualprojectspringboot.repository.CustomizeTripRepository;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
+@DataJpaTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CustomizeTripTest {
 
-    @Mock
-    private CustomizeTripService customizeTripService;
-
-    @InjectMocks
-    private CustomizeTripController customizeTripController;
+    @Autowired
+    private CustomizeTripRepository customizeTripRepository;
 
     @Test
-    public void testSaveTrip() throws IOException {
-        CustomizeTripPojo customizeTripPojo = new CustomizeTripPojo();
-        customizeTripPojo.setFullName("John Doe");
-        customizeTripPojo.setPhoneNumber("1234567890");
-        customizeTripPojo.setEmailAddress("john@example.com");
-        customizeTripPojo.setSelectTrip("Trip to Mountains");
-        customizeTripPojo.setApproxDate("2024-03-01");
-        customizeTripPojo.setTripLength("5 days");
-        customizeTripPojo.setNumberOfAdults("2");
-        customizeTripPojo.setNumberOfChildren("1");
-        customizeTripPojo.setTourType("Adventure");
-        customizeTripPojo.setHotelType("Luxury");
-        customizeTripPojo.setEstimatedBudget("High");
-        customizeTripPojo.setGuideLanguage("English");
-        customizeTripPojo.setMoreInfo("Additional info");
-        customizeTripPojo.setWhereDidYouFindUs("Google");
+    @Order(1)
+    @Rollback(value = false)
+    public void saveCustomizeTrip() {
+        CustomizeTrip customizeTrip = CustomizeTrip.builder()
+                .fullName("John Doe")
+                .phoneNumber("1234567890")
+                .emailAddress("john@example.com")
+                .selectTrip("Trip to Mountains")
+                .approxDate("2024-03-01")
+                .tripLength("5 days")
+                .numberOfAdults("2")
+                .numberOfChildren("1")
+                .tourType("Adventure")
+                .hotelType("Luxury")
+                .estimatedBudget("High")
+                .guideLanguage("English")
+                .moreInfo("Additional info")
+                .whereDidYouFindUs("Google")
+                .build();
 
-        String result = customizeTripController.saveTrip(customizeTripPojo);
-
-        assertEquals("data created successfully yohhh", result);
-        verify(customizeTripService, times(1)).saveTrip(customizeTripPojo);
+        customizeTripRepository.save(customizeTrip);
+        assertNotNull(customizeTrip.getId());
     }
 
     @Test
+    @Order(2)
     public void testFindAll() {
-        CustomizeTrip trip1 = new CustomizeTrip();
-        CustomizeTrip trip2 = new CustomizeTrip();
-        when(customizeTripService.findAll()).thenReturn(Arrays.asList(trip1, trip2));
-
-        List<CustomizeTrip> result = customizeTripController.findAll();
-
-        assertEquals(2, result.size());
-        verify(customizeTripService, times(1)).findAll();
+        List<CustomizeTrip> customizeTrips = customizeTripRepository.findAll();
+        assertFalse(customizeTrips.isEmpty());
     }
 
     @Test
+    @Order(3)
+    @Rollback(value = false)
     public void testDeleteById() {
-        customizeTripController.deleteById(1);
+        Optional<CustomizeTrip> customizeTripOptional = customizeTripRepository.findById(1);
+        assertTrue(customizeTripOptional.isPresent());
 
-        verify(customizeTripService, times(1)).deleteById(1);
+        CustomizeTrip customizeTrip = customizeTripOptional.get();
+        customizeTripRepository.delete(customizeTrip);
+
+        Optional<CustomizeTrip> deletedCustomizeTripOptional = customizeTripRepository.findById(1);
+        assertFalse(deletedCustomizeTripOptional.isPresent());
     }
 }

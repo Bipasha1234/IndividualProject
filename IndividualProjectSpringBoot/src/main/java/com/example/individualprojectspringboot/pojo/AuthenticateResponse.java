@@ -13,6 +13,6 @@ public class AuthenticateResponse {
 
     private String token;
     private Integer userId;
-    private boolean isAdmin;
+//    private boolean isAdmin;
 
 }

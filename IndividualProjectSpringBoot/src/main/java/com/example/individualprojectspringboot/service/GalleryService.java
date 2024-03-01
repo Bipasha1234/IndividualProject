@@ -16,8 +16,6 @@ public interface GalleryService {
 
         List<Gallery> findAll();
 
-//        Optional<Gallery> findById(Integer id);
-
         void deleteById(Integer id);
 
         void updateGallery(Integer id, GalleryPojo updatedGalleryPojo) throws IOException;

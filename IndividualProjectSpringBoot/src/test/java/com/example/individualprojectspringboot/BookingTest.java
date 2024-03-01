@@ -1,3 +1,5 @@
+package com.example.individualprojectspringboot;
+
 import com.example.individualprojectspringboot.controller.BookingController;
 import com.example.individualprojectspringboot.entity.Booking;
 import com.example.individualprojectspringboot.pojo.BookingPojo;

@@ -1,14 +1,10 @@
 package com.example.individualprojectspringboot.entity;
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-
-
-
 @Builder
 @Getter
 @Setter
@@ -21,7 +17,6 @@ public class User implements UserDetails {
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_id_seq",allocationSize = 1)
     @GeneratedValue(generator="user_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
-
     @Column(name="first_name", nullable = false, length = 255)
     private String firstName;
 

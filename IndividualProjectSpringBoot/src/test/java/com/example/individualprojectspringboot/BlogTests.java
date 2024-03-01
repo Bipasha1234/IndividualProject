@@ -1,3 +1,5 @@
+package com.example.individualprojectspringboot;
+
 import com.example.individualprojectspringboot.controller.BlogController;
 import com.example.individualprojectspringboot.entity.Blog;
 import com.example.individualprojectspringboot.pojo.BlogPojo;

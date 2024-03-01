@@ -7,11 +7,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class BookingPojo {
-
     private Integer id;
-
     private String bookingName;
-
     private String bookingPhoneNumber;
 
     private String bookingEmail;
@@ -24,5 +21,4 @@ public class BookingPojo {
 
     private Integer packageId;
 
-    // Constructors, getters, setters, and other methods...
 }

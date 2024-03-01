@@ -15,14 +15,8 @@ public class BlogPojo {
         private String blogName;
         @NotNull
         private MultipartFile blogImage;
-
-
         @NotEmpty
         private String blogDescription;
-
-
-
-
 
 
 }

@@ -1,21 +1,19 @@
 package com.example.individualprojectspringboot.entity;
-
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 @Setter
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name="customize_trip")
-
-
 public class CustomizeTrip {
-
     @Id
         @SequenceGenerator(name = "customize_trip_seq_gen", sequenceName = "customize_trip_id_seq", allocationSize = 1)
         @GeneratedValue(generator = "customize_trip_seq_gen", strategy = GenerationType.SEQUENCE)
         private Integer id;
-
     @Column(name = "full_name", nullable = false, length = 255)
     private String fullName;
 

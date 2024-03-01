@@ -18,29 +18,23 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class PackageController {
     private final PackageService packageService;
-
     @PostMapping("/save")
     public String savePackage(@RequestBody @ModelAttribute PackagePojo packagePojo) throws IOException {
        packageService.savePackage(packagePojo);
         return "data created successfully yoh";
     }
-
     @GetMapping("/getAll")
     public List<Package> findAll(){
         return packageService.findAll();
     }
-
     @GetMapping("/getById/{id}")
     public Optional<Package> findById(@PathVariable("id") Integer id){
         return packageService.findById(id);
     }
-
     @DeleteMapping("/deleteById/{id}")
-
     public void deleteById(@PathVariable("id") Integer id){
         packageService.deleteById(id);
     }
-
     @PutMapping("/update/{id}")
     public String updatePackage(@PathVariable("id") Integer id, @RequestBody @ModelAttribute PackagePojo updatedPackagePojo) throws IOException {
         packageService.updatePackage(id, updatedPackagePojo);

@@ -50,7 +50,7 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/authenticate","/user/save","/blog/**","/package/**","/gallery/**","/customize/**"
 
-                ,"/booking/**","/change-password")
+                ,"/booking/**","/change-password","/message/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

@@ -1,104 +1,95 @@
 package com.example.individualprojectspringboot;
 
-import com.example.individualprojectspringboot.controller.PackageController;
 import com.example.individualprojectspringboot.entity.Package;
-import com.example.individualprojectspringboot.pojo.PackagePojo;
-import com.example.individualprojectspringboot.service.PackageService;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.example.individualprojectspringboot.repository.PackageRepository;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.annotation.Rollback;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
-
-@ExtendWith(MockitoExtension.class)
+@DataJpaTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PackageTests {
 
-    @Mock
-    private PackageService packageService;
-
-    @InjectMocks
-    private PackageController packageController;
+    @Autowired
+    private PackageRepository packageRepository;
 
     @Test
-    public void testSavePackage() throws IOException {
-        PackagePojo packagePojo = new PackagePojo();
-        packagePojo.setPackageName("Test Package");
-        packagePojo.setPackageDescription("Test description");
-        packagePojo.setPackageDifficulty("Easy");
-        packagePojo.setPackagePerPrice("100");
-        packagePojo.setPackageMaxAltitude("2000");
-        packagePojo.setPackageBestTime("Spring");
-        packagePojo.setPackageItinerary("Test itinerary");
-        packagePojo.setPackageFaq("Test FAQ");
-        packagePojo.setPackageDuration("3 days");
+    @Order(1)
+    @Rollback(value = false)
+    public void savePackage() {
+        Package pack = Package.builder()
+                .packageName("Test Package")
+                .packageDescription("Test description")
+                .packageDifficulty("Easy")
+                .packagePerPrice("100")
+                .packageMaxAltitude("2000")
+                .packageBestTime("Spring")
+                .packageItinerary("Test itinerary")
+                .packageFaq("Test FAQ")
+                .packageDuration("3 days")
+                .build();
+
         MockMultipartFile imageFile = new MockMultipartFile("packageImage", "test_image.jpg", "image/jpeg", "test image".getBytes());
-        packagePojo.setPackageImage(imageFile);
 
+        // Set the packageImage field
+        pack.setPackageImage(String.valueOf(imageFile));
 
-        String result = packageController.savePackage(packagePojo);
+        // Save the package
+        packageRepository.save(pack);
 
-        assertEquals("data created successfully yoh", result);
-        verify(packageService, times(1)).savePackage(packagePojo);
+        // Assertions
+        Assertions.assertThat(pack.getId()).isNotNull();
     }
 
     @Test
-    public void testFindAll() {
-        Package package1 = new Package();
-        Package package2 = new Package();
-        when(packageService.findAll()).thenReturn(Arrays.asList(package1, package2));
-
-        List<Package> result = packageController.findAll();
-
-        assertEquals(2, result.size());
-        verify(packageService, times(1)).findAll();
+    @Order(2)
+    public void getPackageTest() {
+        Optional<Package> packOptional = packageRepository.findById(1);
+        Assertions.assertThat(packOptional).isPresent();
+        Package pack = packOptional.orElse(null);
+        Assertions.assertThat(pack).isNotNull();
+        Assertions.assertThat(pack.getId()).isEqualTo(1L);
     }
 
     @Test
-    public void testFindById() {
-        Package package1 = new Package();
-        when(packageService.findById(1)).thenReturn(Optional.of(package1));
-
-        Optional<Package> result = packageController.findById(1);
-
-        assertEquals(Optional.of(package1), result);
-        verify(packageService, times(1)).findById(1);
+    @Order(3)
+    public void fetchAll() {
+        List<Package> packages = packageRepository.findAll();
+        Assertions.assertThat(packages.size()).isGreaterThan(0);
     }
 
     @Test
-    public void testDeleteById() {
-        packageController.deleteById(1);
+    @Order(4)
+    @Rollback(value = false)
+    public void updatePackage() {
+        Optional<Package> packOptional = packageRepository.findById(1);
+        Assertions.assertThat(packOptional).isPresent();
+        Package pack = packOptional.orElse(null);
+        Assertions.assertThat(pack).isNotNull();
 
-        verify(packageService, times(1)).deleteById(1);
+        pack.setPackageName("Updated Package");
+        Package updatedPack = packageRepository.save(pack);
+        Assertions.assertThat(updatedPack.getPackageName()).isEqualTo("Updated Package");
     }
 
     @Test
-    public void testUpdatePackage() throws IOException {
-        PackagePojo updatedPackagePojo = new PackagePojo();
-        updatedPackagePojo.setPackageName("Updated Package");
-        updatedPackagePojo.setPackageDescription("Updated description");
-        updatedPackagePojo.setPackageDifficulty("Moderate");
-        updatedPackagePojo.setPackagePerPrice("150");
-        updatedPackagePojo.setPackageMaxAltitude("2500");
-        updatedPackagePojo.setPackageBestTime("Summer");
-        updatedPackagePojo.setPackageItinerary("Updated itinerary");
-        updatedPackagePojo.setPackageFaq("Updated FAQ");
-        updatedPackagePojo.setPackageDuration("5 days");
-        MockMultipartFile imageFile = new MockMultipartFile("packageImage", "test_image.jpg", "image/jpeg", "test image".getBytes());
-        updatedPackagePojo.setPackageImage(imageFile);
+    @Order(5)
+    @Rollback(value = false)
+    public void deletePackage() {
+        Optional<Package> packOptional = packageRepository.findById(1);
+        Assertions.assertThat(packOptional).isPresent();
+        Package pack = packOptional.orElse(null);
+        Assertions.assertThat(pack).isNotNull();
 
-        String result = packageController.updatePackage(1, updatedPackagePojo);
+        packageRepository.delete(pack);
 
-        assertEquals("data updated successfully", result);
-        verify(packageService, times(1)).updatePackage(1, updatedPackagePojo);
+        Optional<Package> deletedPackOptional = packageRepository.findById(1);
+        Assertions.assertThat(deletedPackOptional).isEmpty();
     }
 }

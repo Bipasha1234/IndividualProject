@@ -13,12 +13,7 @@ public interface CustomizeTripService {
         void saveTrip(CustomizeTripPojo customizeTripPojo) throws IOException;
 
         List<CustomizeTrip> findAll();
-
-//        Optional<Blog> findById(Integer id);
-
         void deleteById(Integer id);
-
-//        void updateBlog(Integer id, BlogPojo updatedBlogPojo) throws IOException;
 
     }
 

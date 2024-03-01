@@ -11,7 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserPojo {
-
     private Integer id;
 
     @NotNull(message="first name is required")

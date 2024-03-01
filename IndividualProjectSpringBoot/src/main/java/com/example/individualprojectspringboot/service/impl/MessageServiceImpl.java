@@ -29,6 +29,7 @@ public class MessageServiceImpl implements MessageService {
     public void saveMessage(MessagePojo messagePojo) throws IOException {
         Message messageEntity = new Message();
 
+
         if (messagePojo.getId() != null) {
             messageEntity = messageRepository.findById(messagePojo.getId())
                     .orElseThrow(() -> new NoSuchElementException("No data found"));
@@ -58,7 +59,7 @@ public class MessageServiceImpl implements MessageService {
 
     private void sendEmail(Message message) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo("bipashalamsal@gmail.com"); // Replace with your admin's email address
+        mailMessage.setTo("bipashalamsal@gmail.com");
         mailMessage.setSubject("New Message from Contact Form");
         mailMessage.setText(
                 "Name: " + message.getMessageName() + "\n" +

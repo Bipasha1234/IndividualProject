@@ -1,7 +1,7 @@
 package com.example.individualprojectspringboot.service;
 
-import com.example.individualprojectspringboot.Request.ChangePasswordRequest;
-import com.example.individualprojectspringboot.Request.ChangePasswordResponse;
+import com.example.individualprojectspringboot.pojo.ChangePasswordRequest;
+import com.example.individualprojectspringboot.pojo.ChangePasswordResponse;
 
 public interface ChangePasswordServicee {
     ChangePasswordResponse changePassword(ChangePasswordRequest request);
